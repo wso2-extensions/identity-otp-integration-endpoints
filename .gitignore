@@ -21,3 +21,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#Build files
+*target/
+
+#IntelliJ specific files
+*.iml
+.idea
+
+#Openapi-Generator specific files
+*.openapi-generator-ignore
+*.openapi-generator/
