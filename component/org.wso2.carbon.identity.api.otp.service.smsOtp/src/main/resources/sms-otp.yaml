@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  description: >
+    This is the RESTful API for a user to manage SMS-OTP in WSO2
+    Identity Server.
+  version: 1.0.0-oas3
+  title: WSO2 Identity Server - SMS OTP API Definition
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+# Applicable authentication mechanisms.
+security:
+  - OAuth2: []
+  - BasicAuth: []
+tags:
+  - name: SMS OTP
+    description: SMS OTP Operations.
+paths:
+  /smsotp/generate:
+    post:
+      description: |
+        This API is used to generate the smsotp.
+        <b>Permission required:</b><br>
+        * none<br>
+        <b>Scope required:</b><br>
+        * internal_login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPGenerationRequest'
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPGenerateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Resource Forbidden
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - smsotp
+  /smsotp/validate:
+    post:
+      description: |
+        This API is used to validate the smsotp.
+        <b>Permission required:</b><br>
+        * none<br>
+        <b>Scope required:</b><br>
+        * internal_login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPValidationRequest'
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPValidationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Resource Forbidden
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - smsotp
+servers:
+  - url: 'https://localhost:9443/t/carbon.super/api/server/v1'
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://localhost:9443/oauth2/authorize'
+          tokenUrl: 'https://localhost:9443/oauth2/token'
+          scopes: {}
+  schemas:
+    #-----------------------------------------------------
+    # Error Response object
+    #-----------------------------------------------------
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          example: SMS-60001
+        message:
+          type: string
+          example: Some error message
+        description:
+          type: string
+          example: Some error description
+        traceId:
+          type: string
+          example: e0fbcfeb-3617-43c4-8dd0-7b7d38e13047
+
+    #-----------------------------------------------------
+    # OTP Generation Request object
+    #-----------------------------------------------------
+    OTPGenerationRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: SCIM Id of the user
+          example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
+
+    #-----------------------------------------------------
+    # OTP Generation Response object
+    #-----------------------------------------------------
+    OTPGenerateResponse:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          readOnly: true
+          description: Unique identifier of the generated OTP
+        smsOTP:
+          type: string
+          readOnly: true
+          description: The generated OTP
+
+    #-----------------------------------------------------
+    # OTP Validation Request object
+    #-----------------------------------------------------
+    OTPValidationRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: SCIM ID of the user
+          example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
+        transactionId:
+          type: string
+          description: Unique identifier of the generated OTP
+        smsOTP:
+          type: string
+          description: SMS OTP
+
+    #-----------------------------------------------------
+    # OTP Validation Response object
+    #-----------------------------------------------------
+    OTPValidationResponse:
+      type: object
+      properties:
+        isValid:
+          type: boolean
+          description: SMS OTP validated successfully
+        userId:
+          type: string
+          description: SCIM ID of the user which the token issued and validated
+          example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
