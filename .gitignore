@@ -1,0 +1,18 @@
+.idea
+*.class
+.classpath
+.settings
+.project
+*.openapi-generator
+*.openapi-generator-ignore
+*.iml
+*.iws
+*.ipr
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Ignore everything in this directory
+target
