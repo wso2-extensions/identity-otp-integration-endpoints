@@ -18,8 +18,6 @@ package org.wso2.identity.api.otp.service.smsotp.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.identity.smsotp.common.SMSOTPService;
-import org.wso2.carbon.identity.smsotp.common.SMSOTPServiceImpl;
 import org.wso2.carbon.identity.smsotp.common.dto.GenerationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.ValidationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
@@ -44,8 +42,8 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
     public Response smsotpGeneratePost(OTPGenerationRequest otpGenerationRequest) {
 
         try {
-            SMSOTPService smsOTPService = new SMSOTPServiceImpl();
-            GenerationResponseDTO responseDTO = smsOTPService.generateSMSOTP(otpGenerationRequest.getUserId());
+            GenerationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().generateSMSOTP(
+                    otpGenerationRequest.getUserId());
             OTPGenerateResponse response = new OTPGenerateResponse()
                     .transactionId(responseDTO.getTransactionId())
                     .smsOTP(responseDTO.getSmsOTP());
@@ -63,8 +61,7 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
     public Response smsotpValidatePost(OTPValidationRequest otpValidationRequest) {
 
         try {
-            SMSOTPService smsOTPService = new SMSOTPServiceImpl();
-            ValidationResponseDTO responseDTO = smsOTPService.validateSMSOTP(
+            ValidationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().validateSMSOTP(
                     otpValidationRequest.getTransactionId(),
                     otpValidationRequest.getUserId(),
                     otpValidationRequest.getSmsOTP()
