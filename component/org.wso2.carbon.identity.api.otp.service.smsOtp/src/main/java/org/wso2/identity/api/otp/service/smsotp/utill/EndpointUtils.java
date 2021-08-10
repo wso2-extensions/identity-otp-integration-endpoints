@@ -20,6 +20,8 @@ package org.wso2.identity.api.otp.service.smsotp.utill;
 
 import org.apache.commons.logging.Log;
 import org.apache.log4j.MDC;
+import org.wso2.carbon.context.PrivilegedCarbonContext;
+import org.wso2.carbon.identity.smsotp.common.SMSOTPService;
 import org.wso2.carbon.identity.smsotp.common.constant.Constants;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
@@ -37,6 +39,21 @@ import javax.ws.rs.core.Response;
  * This class provides util functions for SMS OTP REST APIs.
  */
 public class EndpointUtils {
+
+    private static SMSOTPService smsotpService;
+
+    public static SMSOTPService getSMSOTPService() {
+
+        if (smsotpService == null) {
+            synchronized (EndpointUtils.class) {
+                if (smsotpService == null) {
+                    smsotpService = (SMSOTPService) PrivilegedCarbonContext.getThreadLocalCarbonContext().
+                            getOSGiService(SMSOTPService.class, null);
+                }
+            }
+        }
+        return smsotpService;
+    }
 
     private static void logDebug(Log log, Throwable throwable) {
 
