@@ -241,7 +241,6 @@
         <carbon.identity.framework.version>5.16.95</carbon.identity.framework.version>
         <maven.findbugsplugin.version>3.0.4</maven.findbugsplugin.version>
         <identity.workflow.impl.bps.version>5.2.0</identity.workflow.impl.bps.version>
-        <maven.checkstyleplugin.excludes>**/gen/**/*</maven.checkstyleplugin.excludes>
         <identity.event.handler.version>1.2.9</identity.event.handler.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <mavan.findbugsplugin.exclude.file>findbugs-exclude-filter.xml</mavan.findbugsplugin.exclude.file>

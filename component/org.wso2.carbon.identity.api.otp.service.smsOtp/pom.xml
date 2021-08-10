@@ -146,6 +146,7 @@
         <dependency>
             <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.smsotp</groupId>
             <artifactId>org.wso2.carbon.extension.identity.smsotp.common</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -213,7 +214,7 @@
                             <directory>src/main/webapp</directory>
                         </resource>
                     </webResources>
-                    <warName>wso2#rest#smsotp#v1</warName>
+                    <warName>api#identity#sms-otp#v1</warName>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
