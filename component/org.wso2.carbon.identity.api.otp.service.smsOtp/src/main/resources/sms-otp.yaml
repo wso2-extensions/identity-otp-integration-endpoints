@@ -16,6 +16,12 @@ security:
 tags:
   - name: SMS OTP
     description: SMS OTP Operations.
+
+servers:
+  - url: 'https://{server-url}/api/identity/sms-otp/v1'
+    variables:
+      server-url:
+        default: 'localhost:9443'
 paths:
   /smsotp/generate:
     post:
@@ -97,8 +103,6 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
         - smsotp
-servers:
-  - url: 'https://localhost:9443/t/carbon.super/api/server/v1'
 components:
   securitySchemes:
     BasicAuth:
