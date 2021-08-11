@@ -155,13 +155,13 @@
             <dependency>
                 <groupId>org.apache.maven.scm.wso2</groupId>
                 <artifactId>maven-scm</artifactId>
-                <version>1.7.0.wso2v3</version>
+                <version>${maven.scm.version}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.smsotp</groupId>
                 <artifactId>org.wso2.carbon.extension.identity.smsotp.common</artifactId>
-                <version>3.0.15-SNAPSHOT</version>
+                <version>${org.wso2.carbon.extension.identity.smsotp.common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -254,6 +254,8 @@
         <openapi.tools.version>4.1.2</openapi.tools.version>
         <org.codehaus.mojo.version>3.2.0</org.codehaus.mojo.version>
         <maven.checkstyleplugin.excludes>**/gen/**/*</maven.checkstyleplugin.excludes>
+        <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15-SNAPSHOT</org.wso2.carbon.extension.identity.smsotp.common.version>
+        <maven.scm.version>1.7.0.wso2v3</maven.scm.version>
 
         <!-- Carbon kernel version -->
         <carbon.kernel.version>4.6.0</carbon.kernel.version>
