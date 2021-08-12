@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Not Found Exception
+ * Not Found Exception.
  */
 public class NotFoundException extends WebApplicationException {
 

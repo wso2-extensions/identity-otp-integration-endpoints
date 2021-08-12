@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import javax.validation.Valid;
 
+/**
+ * OTPGenerationRequest DTO to get the request OTP generation.
+ */
 public class OTPGenerationRequest {
 
     private String userId;

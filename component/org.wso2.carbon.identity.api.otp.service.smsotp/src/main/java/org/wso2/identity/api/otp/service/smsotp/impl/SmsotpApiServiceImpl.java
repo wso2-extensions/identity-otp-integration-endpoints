@@ -21,7 +21,7 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.smsotp.common.dto.GenerationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.ValidationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
-import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPServerException;
+import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
 import org.wso2.identity.api.otp.service.smsotp.SmsotpApiService;
 import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
 import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
@@ -32,7 +32,8 @@ import org.wso2.identity.api.otp.service.smsotp.utill.EndpointUtils;
 import javax.ws.rs.core.Response;
 
 /**
- * This class implements the service layer for SmsotpAPI
+ * This class implements the service layer for
+ * {@link org.wso2.identity.api.otp.service.smsotp.SmsotpApi}.
  */
 public class SmsotpApiServiceImpl implements SmsotpApiService {
 
@@ -43,14 +44,14 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
 
         try {
             GenerationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().generateSMSOTP(
-                    otpGenerationRequest.getUserId());
+                    otpGenerationRequest.getUserId().trim());
             OTPGenerateResponse response = new OTPGenerateResponse()
                     .transactionId(responseDTO.getTransactionId())
                     .smsOTP(responseDTO.getSmsOTP());
             return Response.ok(response).build();
         } catch (SMSOTPClientException e) {
             return EndpointUtils.handleBadRequestResponse(e, log);
-        } catch (SMSOTPServerException e) {
+        } catch (SMSOTPException e) {
             return EndpointUtils.handleServerErrorResponse(e, log);
         } catch (Throwable e) {
             return EndpointUtils.handleUnexpectedServerError(e, log);
@@ -62,9 +63,9 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
 
         try {
             ValidationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().validateSMSOTP(
-                    otpValidationRequest.getTransactionId(),
-                    otpValidationRequest.getUserId(),
-                    otpValidationRequest.getSmsOTP()
+                    otpValidationRequest.getTransactionId().trim(),
+                    otpValidationRequest.getUserId().trim(),
+                    otpValidationRequest.getSmsOTP().trim()
             );
             OTPValidationResponse response = new OTPValidationResponse()
                     .isValid(responseDTO.isValid())
@@ -72,7 +73,7 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
             return Response.ok(response).build();
         } catch (SMSOTPClientException e) {
             return EndpointUtils.handleBadRequestResponse(e, log);
-        } catch (SMSOTPServerException e) {
+        } catch (SMSOTPException e) {
             return EndpointUtils.handleServerErrorResponse(e, log);
         } catch (Throwable e) {
             return EndpointUtils.handleUnexpectedServerError(e, log);

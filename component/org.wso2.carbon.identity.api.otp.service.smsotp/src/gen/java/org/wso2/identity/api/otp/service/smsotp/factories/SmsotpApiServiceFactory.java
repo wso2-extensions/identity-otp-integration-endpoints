@@ -19,11 +19,14 @@ package org.wso2.identity.api.otp.service.smsotp.factories;
 import org.wso2.identity.api.otp.service.smsotp.SmsotpApiService;
 import org.wso2.identity.api.otp.service.smsotp.impl.SmsotpApiServiceImpl;
 
+/**
+ *  This provides the singleton object of the {@link SmsotpApiService}.
+ */
 public class SmsotpApiServiceFactory {
 
    private final static SmsotpApiService service = new SmsotpApiServiceImpl();
 
-   public static SmsotpApiService getSmsotpApi()
+   public static SmsotpApiService getSmsotpApiService()
    {
       return service;
    }

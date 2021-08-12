@@ -23,6 +23,9 @@ import java.util.Objects;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+/**
+ * ErrorDTO of the request.
+ */
 public class Error {
 
     private String code;
@@ -30,9 +33,6 @@ public class Error {
     private String description;
     private String traceId;
 
-    /**
-     *
-     **/
     public Error code(String code) {
 
         this.code = code;
@@ -54,9 +54,6 @@ public class Error {
         this.code = code;
     }
 
-    /**
-     *
-     **/
     public Error message(String message) {
 
         this.message = message;
@@ -78,9 +75,6 @@ public class Error {
         this.message = message;
     }
 
-    /**
-     *
-     **/
     public Error description(String description) {
 
         this.description = description;
@@ -100,9 +94,6 @@ public class Error {
         this.description = description;
     }
 
-    /**
-     *
-     **/
     public Error traceId(String traceId) {
 
         this.traceId = traceId;

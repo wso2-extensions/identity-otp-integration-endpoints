@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import javax.validation.Valid;
 
+/**
+ * OTPValidationRequest DTO to validate OTP.
+ */
 public class OTPValidationRequest {
 
     private String userId;

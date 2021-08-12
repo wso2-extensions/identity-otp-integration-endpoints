@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import javax.validation.Valid;
 
+/**
+ * OTPGenerationResponse DTO to get the response of OTP generation.
+ */
 public class OTPGenerateResponse {
 
     private String transactionId;
