@@ -52,3 +52,4 @@
         </jaxrs:providers>
     </jaxrs:server>
 </beans>
+

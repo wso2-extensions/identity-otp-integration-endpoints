@@ -189,3 +189,4 @@ public class EndpointUtils {
         return new ConflictRequestException(errorDTO);
     }
 }
+

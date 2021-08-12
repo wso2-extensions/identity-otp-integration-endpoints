@@ -50,3 +50,4 @@ public class BadRequestException extends WebApplicationException {
         return message;
     }
 }
+

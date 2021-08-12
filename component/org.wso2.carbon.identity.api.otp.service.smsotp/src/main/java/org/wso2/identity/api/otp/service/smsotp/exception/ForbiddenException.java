@@ -50,3 +50,4 @@ public class ForbiddenException extends WebApplicationException {
         return message;
     }
 }
+
