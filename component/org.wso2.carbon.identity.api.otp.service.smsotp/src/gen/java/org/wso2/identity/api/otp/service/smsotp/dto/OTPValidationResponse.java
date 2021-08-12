@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,53 +22,53 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import javax.validation.Valid;
 
-public class OTPGenerateResponse {
+public class OTPValidationResponse {
 
-    private String transactionId;
-    private String smsOTP;
+    private Boolean isValid;
+    private String userId;
 
     /**
-     * Unique identifier of the generated OTP
+     * SMS OTP validated successfully
      **/
-    public OTPGenerateResponse transactionId(String transactionId) {
+    public OTPValidationResponse isValid(Boolean isValid) {
 
-        this.transactionId = transactionId;
+        this.isValid = isValid;
         return this;
     }
 
-    @ApiModelProperty(value = "Unique identifier of the generated OTP")
-    @JsonProperty("transactionId")
+    @ApiModelProperty(value = "SMS OTP validated successfully")
+    @JsonProperty("isValid")
     @Valid
-    public String getTransactionId() {
+    public Boolean getIsValid() {
 
-        return transactionId;
+        return isValid;
     }
 
-    public void setTransactionId(String transactionId) {
+    public void setIsValid(Boolean isValid) {
 
-        this.transactionId = transactionId;
+        this.isValid = isValid;
     }
 
     /**
-     * The generated OTP
+     * SCIM ID of the user which the token issued and validated
      **/
-    public OTPGenerateResponse smsOTP(String smsOTP) {
+    public OTPValidationResponse userId(String userId) {
 
-        this.smsOTP = smsOTP;
+        this.userId = userId;
         return this;
     }
 
-    @ApiModelProperty(value = "The generated OTP")
-    @JsonProperty("smsOTP")
+    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", value = "SCIM ID of the user which the token issued and validated")
+    @JsonProperty("userId")
     @Valid
-    public String getSmsOTP() {
+    public String getUserId() {
 
-        return smsOTP;
+        return userId;
     }
 
-    public void setSmsOTP(String smsOTP) {
+    public void setUserId(String userId) {
 
-        this.smsOTP = smsOTP;
+        this.userId = userId;
     }
 
     @Override
@@ -80,25 +80,25 @@ public class OTPGenerateResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OTPGenerateResponse otPGenerateResponse = (OTPGenerateResponse) o;
-        return Objects.equals(this.transactionId, otPGenerateResponse.transactionId) &&
-                Objects.equals(this.smsOTP, otPGenerateResponse.smsOTP);
+        OTPValidationResponse otPValidationResponse = (OTPValidationResponse) o;
+        return Objects.equals(this.isValid, otPValidationResponse.isValid) &&
+                Objects.equals(this.userId, otPValidationResponse.userId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(transactionId, smsOTP);
+        return Objects.hash(isValid, userId);
     }
 
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("class OTPGenerateResponse {\n");
+        sb.append("class OTPValidationResponse {\n");
 
-        sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
-        sb.append("    smsOTP: ").append(toIndentedString(smsOTP)).append("\n");
+        sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
+        sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -115,4 +115,3 @@ public class OTPGenerateResponse {
         return o.toString().replace("\n", "\n");
     }
 }
-

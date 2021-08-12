@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,30 +22,53 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import javax.validation.Valid;
 
-public class OTPGenerationRequest {
+public class OTPGenerateResponse {
 
-    private String userId;
+    private String transactionId;
+    private String smsOTP;
 
     /**
-     * SCIM Id of the user
+     * Unique identifier of the generated OTP
      **/
-    public OTPGenerationRequest userId(String userId) {
+    public OTPGenerateResponse transactionId(String transactionId) {
 
-        this.userId = userId;
+        this.transactionId = transactionId;
         return this;
     }
 
-    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", value = "SCIM Id of the user")
-    @JsonProperty("userId")
+    @ApiModelProperty(value = "Unique identifier of the generated OTP")
+    @JsonProperty("transactionId")
     @Valid
-    public String getUserId() {
+    public String getTransactionId() {
 
-        return userId;
+        return transactionId;
     }
 
-    public void setUserId(String userId) {
+    public void setTransactionId(String transactionId) {
 
-        this.userId = userId;
+        this.transactionId = transactionId;
+    }
+
+    /**
+     * The generated OTP
+     **/
+    public OTPGenerateResponse smsOTP(String smsOTP) {
+
+        this.smsOTP = smsOTP;
+        return this;
+    }
+
+    @ApiModelProperty(value = "The generated OTP")
+    @JsonProperty("smsOTP")
+    @Valid
+    public String getSmsOTP() {
+
+        return smsOTP;
+    }
+
+    public void setSmsOTP(String smsOTP) {
+
+        this.smsOTP = smsOTP;
     }
 
     @Override
@@ -57,23 +80,25 @@ public class OTPGenerationRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OTPGenerationRequest otPGenerationRequest = (OTPGenerationRequest) o;
-        return Objects.equals(this.userId, otPGenerationRequest.userId);
+        OTPGenerateResponse otPGenerateResponse = (OTPGenerateResponse) o;
+        return Objects.equals(this.transactionId, otPGenerateResponse.transactionId) &&
+                Objects.equals(this.smsOTP, otPGenerateResponse.smsOTP);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(userId);
+        return Objects.hash(transactionId, smsOTP);
     }
 
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("class OTPGenerationRequest {\n");
+        sb.append("class OTPGenerateResponse {\n");
 
-        sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+        sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
+        sb.append("    smsOTP: ").append(toIndentedString(smsOTP)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -90,4 +115,3 @@ public class OTPGenerationRequest {
         return o.toString().replace("\n", "\n");
     }
 }
-

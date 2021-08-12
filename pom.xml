@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+WSO2 Inc. licenses this file to you under the Apache License,
+Version 2.0 (the "License"); you may not use this file except
+in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied. See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -13,7 +30,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>component/org.wso2.carbon.identity.api.otp.service.smsOtp</module>
+        <module>component/org.wso2.carbon.identity.api.otp.service.smsotp</module>
     </modules>
 
     <dependencyManagement>
@@ -85,11 +102,6 @@
                 <version>${springframework.version}</version>
             </dependency>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>javax.ws.rs</groupId>
                 <artifactId>javax.ws.rs-api</artifactId>
                 <version>${javax.ws.rs-api.version}</version>
@@ -126,6 +138,13 @@
                 </exclusions>
             </dependency>
             <dependency>
+                <groupId>org.apache.maven.scm.wso2</groupId>
+                <artifactId>maven-scm</artifactId>
+                <version>${maven.scm.version}</version>
+            </dependency>
+
+            <!-- WSO2 dependencies-->
+            <dependency>
                 <groupId>org.wso2.carbon.identity.governance</groupId>
                 <artifactId>org.wso2.carbon.identity.recovery</artifactId>
                 <version>${identity.governance.version}</version>
@@ -151,12 +170,6 @@
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.user.core</artifactId>
                 <version>${carbon.kernel.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.scm.wso2</groupId>
-                <artifactId>maven-scm</artifactId>
-                <version>${maven.scm.version}</version>
-                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.smsotp</groupId>
@@ -234,7 +247,6 @@
         <jackson.version>1.9.13</jackson.version>
         <swagger-jaxrs.version>1.5.20</swagger-jaxrs.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
-        <junit.version>4.12</junit.version>
         <maven.buildnumber.plugin.version>1.4</maven.buildnumber.plugin.version>
         <org.apache.felix.annotations.version>1.2.4</org.apache.felix.annotations.version>
         <identity.governance.version>1.4.1</identity.governance.version>
@@ -254,7 +266,8 @@
         <openapi.tools.version>4.1.2</openapi.tools.version>
         <org.codehaus.mojo.version>3.2.0</org.codehaus.mojo.version>
         <maven.checkstyleplugin.excludes>**/gen/**/*</maven.checkstyleplugin.excludes>
-        <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15-SNAPSHOT</org.wso2.carbon.extension.identity.smsotp.common.version>
+        <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15-SNAPSHOT
+        </org.wso2.carbon.extension.identity.smsotp.common.version>
         <maven.scm.version>1.7.0.wso2v3</maven.scm.version>
 
         <!-- Carbon kernel version -->
