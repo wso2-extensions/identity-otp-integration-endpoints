@@ -40,18 +40,10 @@ import javax.ws.rs.core.Response;
  */
 public class EndpointUtils {
 
-    private static SMSOTPService smsotpService;
-
     public static SMSOTPService getSMSOTPService() {
 
-        if (smsotpService == null) {
-            synchronized (EndpointUtils.class) {
-                if (smsotpService == null) {
-                    smsotpService = (SMSOTPService) PrivilegedCarbonContext.getThreadLocalCarbonContext().
-                            getOSGiService(SMSOTPService.class, null);
-                }
-            }
-        }
+        SMSOTPService smsotpService = (SMSOTPService) PrivilegedCarbonContext.getThreadLocalCarbonContext().
+                getOSGiService(SMSOTPService.class, null);
         return smsotpService;
     }
 
