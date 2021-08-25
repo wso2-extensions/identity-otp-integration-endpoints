@@ -16,32 +16,32 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.exception;
+package org.wso2.carbon.identity.api.otp.service.smsotp.exception;
 
 import org.apache.http.HttpHeaders;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Conflict Request Exception.
+ * Forbidden Exception.
  */
-public class ConflictRequestException extends WebApplicationException {
+public class ForbiddenException extends WebApplicationException {
 
     private String message;
 
-    public ConflictRequestException(Error error) {
+    public ForbiddenException(Error error) {
 
-        super(Response.status(Response.Status.CONFLICT).entity(error)
+        super(Response.status(Response.Status.FORBIDDEN).entity(error)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).build());
         message = error.getDescription();
     }
 
-    public ConflictRequestException() {
+    public ForbiddenException() {
 
-        super(Response.Status.CONFLICT);
+        super(Response.Status.FORBIDDEN);
     }
 
     @Override

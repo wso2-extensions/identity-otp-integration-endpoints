@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.dto;
+package org.wso2.carbon.identity.api.otp.service.smsotp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,48 +25,24 @@ import java.util.Objects;
 import javax.validation.Valid;
 
 /**
- * OTPValidationResponse DTO to get the validate OTP response.
+ * OTPGenerationRequest DTO to get the request OTP generation.
  */
-public class OTPValidationResponse {
+public class OTPGenerationRequest {
 
-    private Boolean isValid;
     private String userId;
 
     /**
-     * SMS OTP validated successfully.
+     * SCIM Id of the user.
      *
-     * @param  isValid
+     * @param userId
      **/
-    public OTPValidationResponse isValid(Boolean isValid) {
-
-        this.isValid = isValid;
-        return this;
-    }
-
-    @ApiModelProperty(value = "SMS OTP validated successfully")
-    @JsonProperty("isValid")
-    @Valid
-    public Boolean getIsValid() {
-
-        return isValid;
-    }
-
-    public void setIsValid(Boolean isValid) {
-
-        this.isValid = isValid;
-    }
-
-    /**
-     * SCIM ID of the user which the token issued and validated
-     **/
-    public OTPValidationResponse userId(String userId) {
+    public OTPGenerationRequest userId(String userId) {
 
         this.userId = userId;
         return this;
     }
 
-    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", value = "SCIM ID of the user which the token " +
-            "issued and validated")
+    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", value = "SCIM Id of the user")
     @JsonProperty("userId")
     @Valid
     public String getUserId() {
@@ -88,24 +64,22 @@ public class OTPValidationResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OTPValidationResponse otPValidationResponse = (OTPValidationResponse) o;
-        return Objects.equals(this.isValid, otPValidationResponse.isValid) &&
-                Objects.equals(this.userId, otPValidationResponse.userId);
+        OTPGenerationRequest otPGenerationRequest = (OTPGenerationRequest) o;
+        return Objects.equals(this.userId, otPGenerationRequest.userId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(isValid, userId);
+        return Objects.hash(userId);
     }
 
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("class OTPValidationResponse {\n");
+        sb.append("class OTPGenerationRequest {\n");
 
-        sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
         sb.append("}");
         return sb.toString();

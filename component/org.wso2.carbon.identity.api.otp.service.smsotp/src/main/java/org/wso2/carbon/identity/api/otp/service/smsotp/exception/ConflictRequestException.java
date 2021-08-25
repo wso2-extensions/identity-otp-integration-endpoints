@@ -16,32 +16,32 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.exception;
+package org.wso2.carbon.identity.api.otp.service.smsotp.exception;
 
 import org.apache.http.HttpHeaders;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Not Found Exception.
+ * Conflict Request Exception.
  */
-public class NotFoundException extends WebApplicationException {
+public class ConflictRequestException extends WebApplicationException {
 
     private String message;
 
-    public NotFoundException(Error error) {
+    public ConflictRequestException(Error error) {
 
-        super(Response.status(Response.Status.NOT_FOUND).entity(error)
+        super(Response.status(Response.Status.CONFLICT).entity(error)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).build());
         message = error.getDescription();
     }
 
-    public NotFoundException() {
+    public ConflictRequestException() {
 
-        super(Response.Status.NOT_FOUND);
+        super(Response.Status.CONFLICT);
     }
 
     @Override

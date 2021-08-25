@@ -16,21 +16,21 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.utill;
+package org.wso2.carbon.identity.api.otp.service.smsotp.utill;
 
 import org.apache.commons.logging.Log;
 import org.apache.log4j.MDC;
 import org.wso2.carbon.context.PrivilegedCarbonContext;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.exception.BadRequestException;
+import org.wso2.carbon.identity.api.otp.service.smsotp.exception.ConflictRequestException;
+import org.wso2.carbon.identity.api.otp.service.smsotp.exception.ForbiddenException;
+import org.wso2.carbon.identity.api.otp.service.smsotp.exception.InternalServerErrorException;
+import org.wso2.carbon.identity.api.otp.service.smsotp.exception.NotFoundException;
 import org.wso2.carbon.identity.smsotp.common.SMSOTPService;
 import org.wso2.carbon.identity.smsotp.common.constant.Constants;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
-import org.wso2.identity.api.otp.service.smsotp.exception.BadRequestException;
-import org.wso2.identity.api.otp.service.smsotp.exception.ConflictRequestException;
-import org.wso2.identity.api.otp.service.smsotp.exception.ForbiddenException;
-import org.wso2.identity.api.otp.service.smsotp.exception.InternalServerErrorException;
-import org.wso2.identity.api.otp.service.smsotp.exception.NotFoundException;
 
 import java.util.UUID;
 import javax.ws.rs.core.Response;

@@ -180,9 +180,9 @@
             <!--                            <generatorName>org.wso2.carbon.codegen.CxfWso2Generator</generatorName>-->
             <!--                            <configOptions>-->
             <!--                                <sourceFolder>src/gen/java</sourceFolder>-->
-            <!--                                <apiPackage>org.wso2.identity.api.otp.service.smsotp</apiPackage>-->
-            <!--                                <modelPackage>org.wso2.identity.api.otp.service.smsotp.dto</modelPackage>-->
-            <!--                                <packageName>org.wso2.identity.api.otp.service.smsotp</packageName>-->
+            <!--                                <apiPackage>org.wso2.carbon.identity.api.otp.service.smsotp</apiPackage>-->
+            <!--                                <modelPackage>org.wso2.carbon.identity.api.otp.service.smsotp.dto</modelPackage>-->
+            <!--                                <packageName>org.wso2.carbon.identity.api.otp.service.smsotp</packageName>-->
             <!--                                <dateLibrary>java8</dateLibrary>-->
             <!--                                <hideGenerationTimestamp>true</hideGenerationTimestamp>-->
             <!--                                <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>-->

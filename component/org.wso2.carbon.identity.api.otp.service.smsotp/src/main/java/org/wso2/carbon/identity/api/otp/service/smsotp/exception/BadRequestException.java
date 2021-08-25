@@ -16,10 +16,10 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.exception;
+package org.wso2.carbon.identity.api.otp.service.smsotp.exception;
 
 import org.apache.http.HttpHeaders;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;

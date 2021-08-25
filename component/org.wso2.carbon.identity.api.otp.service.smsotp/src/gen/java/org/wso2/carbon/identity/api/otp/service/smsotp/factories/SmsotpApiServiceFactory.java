@@ -16,24 +16,21 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.exception;
+package org.wso2.carbon.identity.api.otp.service.smsotp.factories;
 
-import org.apache.http.HttpHeaders;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
-
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
+import org.wso2.carbon.identity.api.otp.service.smsotp.impl.SmsotpApiServiceImpl;
 
 /**
- * Internal Server Error Exception.
+ *  This provides the singleton pattern of the {@link SmsotpApiService}.
  */
-public class InternalServerErrorException extends WebApplicationException {
+public class SmsotpApiServiceFactory {
 
-    public InternalServerErrorException(Error error) {
+   private static final SmsotpApiService service = new SmsotpApiServiceImpl();
 
-        super(Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error)
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).build());
-    }
+   public static SmsotpApiService getSmsotpApiService() {
+
+      return service;
+   }
 }
 

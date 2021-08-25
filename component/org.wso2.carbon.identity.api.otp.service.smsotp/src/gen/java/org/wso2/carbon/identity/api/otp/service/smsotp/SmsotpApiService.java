@@ -16,10 +16,10 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp;
+package org.wso2.carbon.identity.api.otp.service.smsotp;
 
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
 import javax.ws.rs.core.Response;
 
 /**

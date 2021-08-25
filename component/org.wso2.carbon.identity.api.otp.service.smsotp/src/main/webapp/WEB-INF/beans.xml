@@ -37,10 +37,10 @@
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"/>
     <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
     <bean id="postprocess" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-    <context:component-scan base-package="org.wso2.identity.api.otp.service.smsotp"/>
+    <context:component-scan base-package="org.wso2.carbon.identity.api.otp.service.smsotp"/>
 
-    <bean id="smsotpApiService" class="org.wso2.identity.api.otp.service.smsotp.impl.SmsotpApiServiceImpl"/>
-    <bean id="smsotpApi" class="org.wso2.identity.api.otp.service.smsotp.SmsotpApi"/>
+    <bean id="smsotpApiService" class="org.wso2.carbon.identity.api.otp.service.smsotp.impl.SmsotpApiServiceImpl"/>
+    <bean id="smsotpApi" class="org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApi"/>
 
     <jaxrs:server id="smsOtpServices" address="/">
         <jaxrs:serviceBeans>

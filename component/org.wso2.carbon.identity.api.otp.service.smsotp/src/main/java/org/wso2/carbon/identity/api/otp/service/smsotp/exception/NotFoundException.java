@@ -16,32 +16,32 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.exception;
+package org.wso2.carbon.identity.api.otp.service.smsotp.exception;
 
 import org.apache.http.HttpHeaders;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Forbidden Exception.
+ * Not Found Exception.
  */
-public class ForbiddenException extends WebApplicationException {
+public class NotFoundException extends WebApplicationException {
 
     private String message;
 
-    public ForbiddenException(Error error) {
+    public NotFoundException(Error error) {
 
-        super(Response.status(Response.Status.FORBIDDEN).entity(error)
+        super(Response.status(Response.Status.NOT_FOUND).entity(error)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).build());
         message = error.getDescription();
     }
 
-    public ForbiddenException() {
+    public NotFoundException() {
 
-        super(Response.Status.FORBIDDEN);
+        super(Response.Status.NOT_FOUND);
     }
 
     @Override

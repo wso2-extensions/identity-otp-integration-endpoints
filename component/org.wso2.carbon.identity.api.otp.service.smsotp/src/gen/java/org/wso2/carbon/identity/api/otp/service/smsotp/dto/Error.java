@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.dto;
+package org.wso2.carbon.identity.api.otp.service.smsotp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;

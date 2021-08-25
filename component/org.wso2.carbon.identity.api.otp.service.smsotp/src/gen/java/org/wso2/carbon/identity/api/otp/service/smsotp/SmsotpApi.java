@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp;
+package org.wso2.carbon.identity.api.otp.service.smsotp;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,11 +25,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.wso2.identity.api.otp.service.smsotp.dto.Error;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -38,6 +38,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+/**
+ *  Auto generated class to handle the requests of the SMS-OTP.
+ */
 @Path("/smsotp")
 @Api(description = "The smsotp API")
 
@@ -56,9 +59,8 @@ public class SmsotpApi {
             response = OTPGenerateResponse.class, authorizations = {
             @Authorization(value = "BasicAuth"),
             @Authorization(value = "OAuth2", scopes = {
-
             })
-    }, tags = {"smsotp",})
+    }, tags = {"smsotp"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = OTPGenerateResponse.class),
             @ApiResponse(code = 400, message = "Bad Request", response = Error.class),

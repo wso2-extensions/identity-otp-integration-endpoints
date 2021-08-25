@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.dto;
+package org.wso2.carbon.identity.api.otp.service.smsotp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,44 +25,19 @@ import java.util.Objects;
 import javax.validation.Valid;
 
 /**
- * OTPValidationRequest DTO to validate OTP.
+ * OTPGenerationResponse DTO to get the response of OTP generation.
  */
-public class OTPValidationRequest {
+public class OTPGenerateResponse {
 
-    private String userId;
     private String transactionId;
     private String smsOTP;
 
     /**
-     * SCIM ID of the user
+     * Unique identifier of the generated OTP.
      *
-     * @param userId
+     * @param transactionId     TransactionId of the OTP.
      **/
-    public OTPValidationRequest userId(String userId) {
-
-        this.userId = userId;
-        return this;
-    }
-
-    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", value = "SCIM ID of the user")
-    @JsonProperty("userId")
-    @Valid
-    public String getUserId() {
-
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-
-        this.userId = userId;
-    }
-
-    /**
-     * Unique identifier of the generated OTP
-     *
-     * @param transactionId
-     **/
-    public OTPValidationRequest transactionId(String transactionId) {
+    public OTPGenerateResponse transactionId(String transactionId) {
 
         this.transactionId = transactionId;
         return this;
@@ -82,17 +57,17 @@ public class OTPValidationRequest {
     }
 
     /**
-     * SMS OTP
+     * The generated OTP.
      *
-     * @param smsOTP
+     * @param smsOTP    generated OTP.
      **/
-    public OTPValidationRequest smsOTP(String smsOTP) {
+    public OTPGenerateResponse smsOTP(String smsOTP) {
 
         this.smsOTP = smsOTP;
         return this;
     }
 
-    @ApiModelProperty(value = "SMS OTP")
+    @ApiModelProperty(value = "The generated OTP")
     @JsonProperty("smsOTP")
     @Valid
     public String getSmsOTP() {
@@ -114,25 +89,23 @@ public class OTPValidationRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OTPValidationRequest otPValidationRequest = (OTPValidationRequest) o;
-        return Objects.equals(this.userId, otPValidationRequest.userId) &&
-                Objects.equals(this.transactionId, otPValidationRequest.transactionId) &&
-                Objects.equals(this.smsOTP, otPValidationRequest.smsOTP);
+        OTPGenerateResponse otPGenerateResponse = (OTPGenerateResponse) o;
+        return Objects.equals(this.transactionId, otPGenerateResponse.transactionId) &&
+                Objects.equals(this.smsOTP, otPGenerateResponse.smsOTP);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(userId, transactionId, smsOTP);
+        return Objects.hash(transactionId, smsOTP);
     }
 
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("class OTPValidationRequest {\n");
+        sb.append("class OTPGenerateResponse {\n");
 
-        sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
         sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
         sb.append("    smsOTP: ").append(toIndentedString(smsOTP)).append("\n");
         sb.append("}");

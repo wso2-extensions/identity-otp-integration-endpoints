@@ -16,26 +16,27 @@
  * under the License.
  */
 
-package org.wso2.identity.api.otp.service.smsotp.impl;
+package org.wso2.carbon.identity.api.otp.service.smsotp.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApi;
+import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.smsotp.utill.EndpointUtils;
 import org.wso2.carbon.identity.smsotp.common.dto.GenerationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.ValidationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
-import org.wso2.identity.api.otp.service.smsotp.SmsotpApiService;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
-import org.wso2.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
-import org.wso2.identity.api.otp.service.smsotp.utill.EndpointUtils;
 
 import javax.ws.rs.core.Response;
 
 /**
  * This class implements the service layer for
- * {@link org.wso2.identity.api.otp.service.smsotp.SmsotpApi}.
+ * {@link SmsotpApi}.
  */
 public class SmsotpApiServiceImpl implements SmsotpApiService {
 
