@@ -20,7 +20,6 @@ package org.wso2.carbon.identity.api.otp.service.smsotp.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApi;
 import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
@@ -36,7 +35,7 @@ import javax.ws.rs.core.Response;
 
 /**
  * This class implements the service layer for
- * {@link SmsotpApi}.
+ * {@link org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApi}.
  */
 public class SmsotpApiServiceImpl implements SmsotpApiService {
 
