@@ -23,9 +23,11 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationFailureReason;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.utill.EndpointUtils;
+import org.wso2.carbon.identity.smsotp.common.dto.FailureReasonDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.GenerationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.ValidationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
@@ -69,9 +71,18 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
                     otpValidationRequest.getUserId().trim(),
                     otpValidationRequest.getSmsOTP().trim()
             );
+            FailureReasonDTO failureReasonDTO = responseDTO.getFailureReason();
+            OTPValidationFailureReason failureReason = null;
+            if (failureReasonDTO != null) {
+                failureReason = new OTPValidationFailureReason()
+                        .code(failureReasonDTO.getCode())
+                        .message(failureReasonDTO.getMessage())
+                        .description(failureReasonDTO.getDescription());
+            }
             OTPValidationResponse response = new OTPValidationResponse()
                     .isValid(responseDTO.isValid())
-                    .userId(responseDTO.getUserId());
+                    .userId(responseDTO.getUserId())
+                    .failureReason(failureReason);
             return Response.ok(response).build();
         } catch (SMSOTPClientException e) {
             return EndpointUtils.handleBadRequestResponse(e, log);
@@ -82,4 +93,3 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
         }
     }
 }
-
