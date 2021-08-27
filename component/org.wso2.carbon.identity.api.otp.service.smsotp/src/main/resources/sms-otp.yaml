@@ -202,6 +202,9 @@ components:
     #-----------------------------------------------------
     OTPValidationResponse:
       type: object
+      required:
+        - isValid
+        - userId
       properties:
         isValid:
           type: boolean
@@ -210,4 +213,24 @@ components:
           type: string
           description: SCIM ID of the user which the token issued and validated
           example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
+        failureReason:
+          type: object
+          $ref: '#/components/schemas/OTPValidationFailureReason'
 
+    #-----------------------------------------------------
+    # OTP Validation Failure Reason object
+    #-----------------------------------------------------
+    OTPValidationFailureReason:
+      type: object
+      properties:
+        code:
+          type: string
+          example: SMS-60006
+        message:
+          type: string
+          description: OTP validation failure reason.
+          example: 'Expired OTP.'
+        description:
+          type: string
+          description: OTP validation failure reason description.
+          example: 'Expired OTP provided for the user Id: 8b1cc9c4-b671-448a-a334-5afe838a4a3b.'

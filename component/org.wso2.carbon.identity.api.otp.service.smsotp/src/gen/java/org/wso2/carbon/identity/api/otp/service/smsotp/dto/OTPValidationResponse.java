@@ -18,19 +18,23 @@
 
 package org.wso2.carbon.identity.api.otp.service.smsotp.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Objects;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * OTPValidationResponse DTO to get the validate OTP response.
  */
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class OTPValidationResponse {
 
     private Boolean isValid;
     private String userId;
+    private OTPValidationFailureReason failureReason;
 
     /**
      * SMS OTP validated successfully.
@@ -46,6 +50,7 @@ public class OTPValidationResponse {
     @ApiModelProperty(value = "SMS OTP validated successfully")
     @JsonProperty("isValid")
     @Valid
+    @NotNull(message = "Property isValid cannot be null.")
     public Boolean getIsValid() {
 
         return isValid;
@@ -79,6 +84,28 @@ public class OTPValidationResponse {
         this.userId = userId;
     }
 
+    /**
+     * SMS OTO validation failure reason.
+    **/
+    public OTPValidationResponse failureReason(OTPValidationFailureReason failureReason) {
+
+        this.failureReason = failureReason;
+        return this;
+    }
+    
+    @ApiModelProperty(value = "Validation failure reason.")
+    @JsonProperty("failureReason")
+    @Valid
+    public OTPValidationFailureReason getFailureReason() {
+
+        return failureReason;
+    }
+
+    public void setFailureReason(OTPValidationFailureReason failureReason) {
+
+        this.failureReason = failureReason;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
 
@@ -90,13 +117,14 @@ public class OTPValidationResponse {
         }
         OTPValidationResponse otPValidationResponse = (OTPValidationResponse) o;
         return Objects.equals(this.isValid, otPValidationResponse.isValid) &&
-                Objects.equals(this.userId, otPValidationResponse.userId);
+            Objects.equals(this.userId, otPValidationResponse.userId) &&
+            Objects.equals(this.failureReason, otPValidationResponse.failureReason);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(isValid, userId);
+        return Objects.hash(isValid, userId, failureReason);
     }
 
     @Override
@@ -104,9 +132,9 @@ public class OTPValidationResponse {
 
         StringBuilder sb = new StringBuilder();
         sb.append("class OTPValidationResponse {\n");
-
         sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+        sb.append("    failureReason: ").append(toIndentedString(failureReason)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -123,4 +151,3 @@ public class OTPValidationResponse {
         return o.toString().replace("\n", "\n");
     }
 }
-

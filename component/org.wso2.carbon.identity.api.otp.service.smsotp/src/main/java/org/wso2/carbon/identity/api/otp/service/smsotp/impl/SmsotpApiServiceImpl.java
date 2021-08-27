@@ -18,14 +18,17 @@
 
 package org.wso2.carbon.identity.api.otp.service.smsotp.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationFailureReason;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.utill.EndpointUtils;
+import org.wso2.carbon.identity.smsotp.common.dto.FailureReasonDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.GenerationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.dto.ValidationResponseDTO;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
@@ -44,9 +47,9 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
     @Override
     public Response smsotpGeneratePost(OTPGenerationRequest otpGenerationRequest) {
 
+        String userId = StringUtils.trim(otpGenerationRequest.getUserId());
         try {
-            GenerationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().generateSMSOTP(
-                    otpGenerationRequest.getUserId().trim());
+            GenerationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().generateSMSOTP(userId);
             OTPGenerateResponse response = new OTPGenerateResponse()
                     .transactionId(responseDTO.getTransactionId())
                     .smsOTP(responseDTO.getSmsOTP());
@@ -63,15 +66,24 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
     @Override
     public Response smsotpValidatePost(OTPValidationRequest otpValidationRequest) {
 
+        String transactionId = StringUtils.trim(otpValidationRequest.getTransactionId());
+        String userId = StringUtils.trim(otpValidationRequest.getUserId());
+        String smsOtp = StringUtils.trim(otpValidationRequest.getSmsOTP());
         try {
             ValidationResponseDTO responseDTO = EndpointUtils.getSMSOTPService().validateSMSOTP(
-                    otpValidationRequest.getTransactionId().trim(),
-                    otpValidationRequest.getUserId().trim(),
-                    otpValidationRequest.getSmsOTP().trim()
-            );
+                    transactionId, userId, smsOtp);
+            FailureReasonDTO failureReasonDTO = responseDTO.getFailureReason();
+            OTPValidationFailureReason failureReason = null;
+            if (failureReasonDTO != null) {
+                failureReason = new OTPValidationFailureReason()
+                        .code(failureReasonDTO.getCode())
+                        .message(failureReasonDTO.getMessage())
+                        .description(failureReasonDTO.getDescription());
+            }
             OTPValidationResponse response = new OTPValidationResponse()
                     .isValid(responseDTO.isValid())
-                    .userId(responseDTO.getUserId());
+                    .userId(responseDTO.getUserId())
+                    .failureReason(failureReason);
             return Response.ok(response).build();
         } catch (SMSOTPClientException e) {
             return EndpointUtils.handleBadRequestResponse(e, log);
@@ -82,4 +94,3 @@ public class SmsotpApiServiceImpl implements SmsotpApiService {
         }
     }
 }
-

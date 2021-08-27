@@ -35,6 +35,8 @@ import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
 import java.util.UUID;
 import javax.ws.rs.core.Response;
 
+import static org.wso2.carbon.identity.api.otp.service.smsotp.constant.Constants.CORRELATION_ID_MDC;
+
 /**
  * This class provides util functions for SMS OTP REST APIs.
  */
@@ -63,7 +65,7 @@ public class EndpointUtils {
 
         String ref;
         if (isCorrelationIDPresent()) {
-            ref = MDC.get(Constants.CORRELATION_ID_MDC).toString();
+            ref = MDC.get(CORRELATION_ID_MDC).toString();
         } else {
             ref = UUID.randomUUID().toString();
         }
@@ -72,7 +74,7 @@ public class EndpointUtils {
 
     public static boolean isCorrelationIDPresent() {
 
-        return MDC.get(Constants.CORRELATION_ID_MDC) != null;
+        return MDC.get(CORRELATION_ID_MDC) != null;
     }
 
     private static Error getError(String message, String description, String code) {
@@ -181,4 +183,3 @@ public class EndpointUtils {
         return new ConflictRequestException(errorDTO);
     }
 }
-
