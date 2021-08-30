@@ -19,7 +19,7 @@ info:
   description: >
     This is the RESTful API for a user to manage SMS-OTP in WSO2
     Identity Server.
-  version: 1.0.0-oas3
+  version: v1
   title: WSO2 Identity Server - SMS OTP API Definition
   license:
     name: Apache 2.0
@@ -29,15 +29,18 @@ info:
 security:
   - OAuth2: []
   - BasicAuth: []
+
 tags:
-  - name: SMS OTP
+  - name: smsotp
     description: SMS OTP Operations.
 
 servers:
-  - url: 'https://{server-url}/api/identity/sms-otp/v1'
+  - url: 'https://{server-url}/t/{tenant-domain}/api/identity/sms-otp/v1'
     variables:
       server-url:
         default: 'localhost:9443'
+      tenant-domain:
+        default: 'carbon.super'
 
 paths:
   /smsotp/generate:
@@ -93,7 +96,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OTPValidationRequest'
-
       responses:
         '200':
           description: OK
