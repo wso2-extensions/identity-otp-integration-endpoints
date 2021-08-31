@@ -17,8 +17,10 @@ _**<IS_HOME>repository/components/dropins**_ directory.
 ### Build & Deploy
 1. To build the maven artifacts and war file, run the following command,
    `mvn clean install`
-2. Add the built war file located in `~/component/org.wso2.carbon.identity.api.otp.service.smsotp/target
-   ` directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
+
+2. Add the built war file located in `~/component/org.wso2.carbon.identity.api.otp.service.smsotp/target` 
+directory to <IS_HOME>/repository/deployment/server/webapps` directory.
+
 3. Go to the **_<IS_HOME>/repository/conf/deployment.toml_** file, and add the below configurations.
    ```
    [[resource.access_control]]
@@ -31,15 +33,18 @@ _**<IS_HOME>repository/components/dropins**_ directory.
    webapps=["/api/identity/sms-otp/v1/"]
    ```
 ### Usage
-1. ### To generate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
-   - ### `carbon.super` tenant
+1. To generate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
+   
+   - `carbon.super` tenant<br>
       `https://{server-url}:{server-port}/api/identity/sms-otp/v1/generate`
-   - ### Other tenants
+   
+   - Other tenants<br>
      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/generate`<br><br>
 
-2. ### To validate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
+2. To validate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
  
-   - ### `carbon.super` tenant
+    - `carbon.super` tenant<br>
      `https://{server-url}:{server-port}/api/identity/sms-otp/v1/validate`
-   - ### Other tenants
-     `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/validate`
+
+    - Other tenants<br>
+   `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/validate`
