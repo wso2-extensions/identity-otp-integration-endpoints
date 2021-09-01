@@ -29,8 +29,8 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
    secure = "true"
    http_method = "POST"
    
-   [tenant_context.rewrite]
-   webapps=["/api/identity/sms-otp/v1/"]
+   [tenant_context.rewrite.custom_webapps]
+   webapps="/api/identity/sms-otp/v1/"
    ```
 ### Usage
 1. To generate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
