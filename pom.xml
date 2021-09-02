@@ -292,7 +292,7 @@
         </org.wso2.carbon.extension.identity.smsotp.common.version>
 
         <!-- Carbon kernel version -->
-        <carbon.kernel.version>4.6.0</carbon.kernel.version>
+        <carbon.kernel.version>4.7.0-m2</carbon.kernel.version>
     </properties>
 </project>
 
