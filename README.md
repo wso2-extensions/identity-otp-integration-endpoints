@@ -24,7 +24,7 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
 3. Go to the **_<IS_HOME>/repository/conf/deployment.toml_** file, and add the below configurations.
    ```
    [[resource.access_control]]
-   default_access ="allow"
+   default_access = "allow"
    context = "(.*)/api/identity/sms-otp/v1/(.*)"
    secure = "true"
    http_method = "POST"

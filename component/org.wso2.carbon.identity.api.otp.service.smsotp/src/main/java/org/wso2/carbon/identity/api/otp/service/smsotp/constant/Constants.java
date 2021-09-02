@@ -19,7 +19,7 @@
 package org.wso2.carbon.identity.api.otp.service.smsotp.constant;
 
 /**
- * This class defines constants for the SMS OTP ReST APIs.
+ * This class defines constants for the SMS OTP REST APIs.
  */
 public class Constants {
 

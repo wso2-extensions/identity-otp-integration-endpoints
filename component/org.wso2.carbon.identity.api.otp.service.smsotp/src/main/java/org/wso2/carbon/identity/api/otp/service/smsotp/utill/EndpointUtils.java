@@ -44,9 +44,8 @@ public class EndpointUtils {
 
     public static SMSOTPService getSMSOTPService() {
 
-        SMSOTPService smsotpService = (SMSOTPService) PrivilegedCarbonContext.getThreadLocalCarbonContext().
+        return (SMSOTPService) PrivilegedCarbonContext.getThreadLocalCarbonContext().
                 getOSGiService(SMSOTPService.class, null);
-        return smsotpService;
     }
 
     private static void logDebug(Log log, Throwable throwable) {
