@@ -18,33 +18,30 @@
 
 package org.wso2.carbon.identity.api.otp.service.smsotp;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
+import org.apache.cxf.jaxrs.ext.multipart.Multipart;
+import java.io.InputStream;
+import java.util.List;
+
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
 
 import javax.validation.Valid;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import io.swagger.annotations.*;
 
-/**
- *  Auto generated class to handle the requests of the SMS-OTP.
- */
+import javax.validation.constraints.*;
+
 @Path("/smsotp")
 @Api(description = "The smsotp API")
 
-public class SmsotpApi {
+public class SmsotpApi  {
 
     @Autowired
     private SmsotpApiService delegate;
@@ -52,53 +49,47 @@ public class SmsotpApi {
     @Valid
     @POST
     @Path("/generate")
-    @Consumes({"application/json"})
-    @Produces({"application/json"})
-    @ApiOperation(value = "", notes = "This API is used to generate the smsotp. <b>Permission required:</b><br>" +
-            " * none<br> <b>Scope required:</b><br> * internal_login ",
-            response = OTPGenerateResponse.class, authorizations = {
-            @Authorization(value = "BasicAuth"),
-            @Authorization(value = "OAuth2", scopes = {
-            })
-    }, tags = {"smsotp"})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = OTPGenerateResponse.class),
-            @ApiResponse(code = 400, message = "Bad Request", response = Error.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = Void.class),
-            @ApiResponse(code = 403, message = "Resource Forbidden", response = Void.class),
-            @ApiResponse(code = 500, message = "Server Error", response = Error.class)
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "", notes = "This API is used to generate the smsotp. <b>Permission required:</b><br> * none<br> <b>Scope required:</b><br> * internal_login ", response = OTPGenerateResponse.class, authorizations = {
+        @Authorization(value = "BasicAuth"),
+        @Authorization(value = "OAuth2", scopes = {
+            
+        })
+    }, tags={ "smsotp", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = OTPGenerateResponse.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = Error.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = Void.class),
+        @ApiResponse(code = 403, message = "Resource Forbidden", response = Void.class),
+        @ApiResponse(code = 500, message = "Server Error", response = Error.class)
     })
-    public Response smsotpGeneratePost(@ApiParam(value = "", required = true)
-                                       @Valid OTPGenerationRequest otPGenerationRequest) {
+    public Response smsotpGeneratePost(@ApiParam(value = "" ,required=true) @Valid OTPGenerationRequest otPGenerationRequest) {
 
-        return delegate.smsotpGeneratePost(otPGenerationRequest);
+        return delegate.smsotpGeneratePost(otPGenerationRequest );
     }
 
     @Valid
     @POST
     @Path("/validate")
-    @Consumes({"application/json"})
-    @Produces({"application/json"})
-    @ApiOperation(value = "", notes = "This API is used to validate the smsotp. <b>Permission required:</b><br>" +
-            " * none<br> <b>Scope required:</b><br> * internal_login ",
-            response = OTPValidationResponse.class, authorizations = {
-            @Authorization(value = "BasicAuth"),
-            @Authorization(value = "OAuth2", scopes = {
-
-            })
-    }, tags = {"smsotp"})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = OTPValidationResponse.class),
-            @ApiResponse(code = 400, message = "Bad Request", response = Error.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = Void.class),
-            @ApiResponse(code = 403, message = "Resource Forbidden", response = Void.class),
-            @ApiResponse(code = 500, message = "Server Error", response = Error.class)
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "", notes = "This API is used to validate the smsotp. <b>Permission required:</b><br> * none<br> <b>Scope required:</b><br> * internal_login ", response = OTPValidationResponse.class, authorizations = {
+        @Authorization(value = "BasicAuth"),
+        @Authorization(value = "OAuth2", scopes = {
+            
+        })
+    }, tags={ "smsotp" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = OTPValidationResponse.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = Error.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = Void.class),
+        @ApiResponse(code = 403, message = "Resource Forbidden", response = Void.class),
+        @ApiResponse(code = 500, message = "Server Error", response = Error.class)
     })
-    public Response smsotpValidatePost(@ApiParam(value = "", required = true)
-                                       @Valid OTPValidationRequest otPValidationRequest) {
+    public Response smsotpValidatePost(@ApiParam(value = "" ,required=true) @Valid OTPValidationRequest otPValidationRequest) {
 
-        return delegate.smsotpValidatePost(otPValidationRequest);
+        return delegate.smsotpValidatePost(otPValidationRequest );
     }
 
 }
-

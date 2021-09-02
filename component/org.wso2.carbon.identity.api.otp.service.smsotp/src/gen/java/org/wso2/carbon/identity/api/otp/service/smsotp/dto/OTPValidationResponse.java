@@ -18,74 +18,68 @@
 
 package org.wso2.carbon.identity.api.otp.service.smsotp.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationFailureReason;
+import javax.validation.constraints.*;
 
+
+import io.swagger.annotations.*;
 import java.util.Objects;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
-/**
- * OTPValidationResponse DTO to get the validate OTP response.
- */
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class OTPValidationResponse {
-
+public class OTPValidationResponse  {
+  
     private Boolean isValid;
     private String userId;
     private OTPValidationFailureReason failureReason;
 
     /**
-     * SMS OTP validated successfully.
-     *
-     * @param  isValid
-     **/
+    * SMS OTP validated successfully
+    **/
     public OTPValidationResponse isValid(Boolean isValid) {
 
         this.isValid = isValid;
         return this;
     }
-
-    @ApiModelProperty(value = "SMS OTP validated successfully")
+    
+    @ApiModelProperty(required = true, value = "SMS OTP validated successfully")
     @JsonProperty("isValid")
     @Valid
     @NotNull(message = "Property isValid cannot be null.")
-    public Boolean getIsValid() {
 
+    public Boolean getIsValid() {
         return isValid;
     }
-
     public void setIsValid(Boolean isValid) {
-
         this.isValid = isValid;
     }
 
     /**
-     * SCIM ID of the user which the token issued and validated.
-     **/
+    * SCIM ID of the user which the token issued and validated
+    **/
     public OTPValidationResponse userId(String userId) {
 
         this.userId = userId;
         return this;
     }
-
-    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", value = "SCIM ID of the user which the token " +
-            "issued and validated")
+    
+    @ApiModelProperty(example = "8b1cc9c4-b671-448a-a334-5afe838a4a3b", required = true, value = "SCIM ID of the user which the token issued and validated")
     @JsonProperty("userId")
     @Valid
-    public String getUserId() {
+    @NotNull(message = "Property userId cannot be null.")
 
+    public String getUserId() {
         return userId;
     }
-
     public void setUserId(String userId) {
-
         this.userId = userId;
     }
 
     /**
-     * SMS OTO validation failure reason.
     **/
     public OTPValidationResponse failureReason(OTPValidationFailureReason failureReason) {
 
@@ -93,18 +87,17 @@ public class OTPValidationResponse {
         return this;
     }
     
-    @ApiModelProperty(value = "Validation failure reason.")
+    @ApiModelProperty(value = "")
     @JsonProperty("failureReason")
     @Valid
     public OTPValidationFailureReason getFailureReason() {
-
         return failureReason;
     }
-
     public void setFailureReason(OTPValidationFailureReason failureReason) {
-
         this.failureReason = failureReason;
     }
+
+
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -123,7 +116,6 @@ public class OTPValidationResponse {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(isValid, userId, failureReason);
     }
 
@@ -132,6 +124,7 @@ public class OTPValidationResponse {
 
         StringBuilder sb = new StringBuilder();
         sb.append("class OTPValidationResponse {\n");
+        
         sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
         sb.append("    failureReason: ").append(toIndentedString(failureReason)).append("\n");
@@ -140,9 +133,9 @@ public class OTPValidationResponse {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
+    * Convert the given object to string with each line indented by 4 spaces
+    * (except the first line).
+    */
     private String toIndentedString(java.lang.Object o) {
 
         if (o == null) {
@@ -151,3 +144,4 @@ public class OTPValidationResponse {
         return o.toString().replace("\n", "\n");
     }
 }
+

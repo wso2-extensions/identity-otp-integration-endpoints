@@ -18,17 +18,23 @@
 
 package org.wso2.carbon.identity.api.otp.service.smsotp;
 
+import org.wso2.carbon.identity.api.otp.service.smsotp.*;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.*;
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
+import org.apache.cxf.jaxrs.ext.multipart.Multipart;
+import java.io.InputStream;
+import java.util.List;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerateResponse;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPGenerationRequest;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationRequest;
+import org.wso2.carbon.identity.api.otp.service.smsotp.dto.OTPValidationResponse;
 import javax.ws.rs.core.Response;
 
-/**
- *  Interface to SMS-OTP REST endpoints.
- */
+
 public interface SmsotpApiService {
 
-    public Response smsotpGeneratePost(OTPGenerationRequest otPGenerationRequest);
+      public Response smsotpGeneratePost(OTPGenerationRequest otPGenerationRequest);
 
-    public Response smsotpValidatePost(OTPValidationRequest otPValidationRequest);
+      public Response smsotpValidatePost(OTPValidationRequest otPValidationRequest);
 }
-

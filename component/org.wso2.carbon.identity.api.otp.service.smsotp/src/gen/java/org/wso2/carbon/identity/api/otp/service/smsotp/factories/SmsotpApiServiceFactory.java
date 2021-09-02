@@ -21,16 +21,12 @@ package org.wso2.carbon.identity.api.otp.service.smsotp.factories;
 import org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApiService;
 import org.wso2.carbon.identity.api.otp.service.smsotp.impl.SmsotpApiServiceImpl;
 
-/**
- *  This provides the singleton pattern of the {@link SmsotpApiService}.
- */
 public class SmsotpApiServiceFactory {
 
-   private static final SmsotpApiService service = new SmsotpApiServiceImpl();
+   private final static SmsotpApiService service = new SmsotpApiServiceImpl();
 
-   public static SmsotpApiService getSmsotpApiService() {
-
+   public static SmsotpApiService getSmsotpApi()
+   {
       return service;
    }
 }
-

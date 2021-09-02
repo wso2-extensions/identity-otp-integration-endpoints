@@ -19,101 +19,101 @@
 package org.wso2.carbon.identity.api.otp.service.smsotp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
 
+
+import io.swagger.annotations.*;
 import java.util.Objects;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
-/**
- * ErrorDTO of the request.
- */
-public class Error {
-
+public class Error  {
+  
     private String code;
     private String message;
     private String description;
     private String traceId;
 
+    /**
+    **/
     public Error code(String code) {
 
         this.code = code;
         return this;
     }
-
+    
     @ApiModelProperty(example = "SMS-60001", required = true, value = "")
     @JsonProperty("code")
     @Valid
     @NotNull(message = "Property code cannot be null.")
 
     public String getCode() {
-
         return code;
     }
-
     public void setCode(String code) {
-
         this.code = code;
     }
 
+    /**
+    **/
     public Error message(String message) {
 
         this.message = message;
         return this;
     }
-
+    
     @ApiModelProperty(example = "Some error message", required = true, value = "")
     @JsonProperty("message")
     @Valid
     @NotNull(message = "Property message cannot be null.")
 
     public String getMessage() {
-
         return message;
     }
-
     public void setMessage(String message) {
-
         this.message = message;
     }
 
+    /**
+    **/
     public Error description(String description) {
 
         this.description = description;
         return this;
     }
-
+    
     @ApiModelProperty(example = "Some error description", value = "")
     @JsonProperty("description")
     @Valid
     public String getDescription() {
-
         return description;
     }
-
     public void setDescription(String description) {
-
         this.description = description;
     }
 
+    /**
+    **/
     public Error traceId(String traceId) {
 
         this.traceId = traceId;
         return this;
     }
-
+    
     @ApiModelProperty(example = "e0fbcfeb-3617-43c4-8dd0-7b7d38e13047", value = "")
     @JsonProperty("traceId")
     @Valid
     public String getTraceId() {
-
         return traceId;
     }
-
     public void setTraceId(String traceId) {
-
         this.traceId = traceId;
     }
+
+
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -126,14 +126,13 @@ public class Error {
         }
         Error error = (Error) o;
         return Objects.equals(this.code, error.code) &&
-                Objects.equals(this.message, error.message) &&
-                Objects.equals(this.description, error.description) &&
-                Objects.equals(this.traceId, error.traceId);
+            Objects.equals(this.message, error.message) &&
+            Objects.equals(this.description, error.description) &&
+            Objects.equals(this.traceId, error.traceId);
     }
 
     @Override
     public int hashCode() {
-
         return Objects.hash(code, message, description, traceId);
     }
 
@@ -142,7 +141,7 @@ public class Error {
 
         StringBuilder sb = new StringBuilder();
         sb.append("class Error {\n");
-
+        
         sb.append("    code: ").append(toIndentedString(code)).append("\n");
         sb.append("    message: ").append(toIndentedString(message)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -152,9 +151,9 @@ public class Error {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
+    * Convert the given object to string with each line indented by 4 spaces
+    * (except the first line).
+    */
     private String toIndentedString(java.lang.Object o) {
 
         if (o == null) {
