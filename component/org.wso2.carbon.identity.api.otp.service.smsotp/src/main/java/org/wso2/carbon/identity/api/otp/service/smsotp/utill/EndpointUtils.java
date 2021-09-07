@@ -114,32 +114,17 @@ public class EndpointUtils {
 
     private static boolean isNotFoundError(SMSOTPClientException e) {
 
-        for (Constants.NotFoundErrorMessages notFoundError : Constants.NotFoundErrorMessages.values()) {
-            if (notFoundError.toString().replace('_', '-').equals(e.getErrorCode())) {
-                return true;
-            }
-        }
-        return false;
+        return Constants.isNotFoundError(e.getErrorCode());
     }
 
     private static boolean isConflictError(SMSOTPClientException e) {
 
-        for (Constants.ConflictErrorMessages conflictError : Constants.ConflictErrorMessages.values()) {
-            if (conflictError.toString().replace('_', '-').equals(e.getErrorCode())) {
-                return true;
-            }
-        }
-        return false;
+        return Constants.isConflictError(e.getErrorCode());
     }
 
     private static boolean isForbiddenError(SMSOTPClientException e) {
 
-        for (Constants.ForbiddenErrorMessages forbiddenError : Constants.ForbiddenErrorMessages.values()) {
-            if (forbiddenError.toString().replace('_', '-').equals(e.getErrorCode())) {
-                return true;
-            }
-        }
-        return false;
+        return Constants.isForbiddenError(e.getErrorCode());
     }
 
     public static NotFoundException buildNotFoundRequestException(String description, String message, String code,
