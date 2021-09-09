@@ -37,7 +37,8 @@ import org.wso2.carbon.identity.api.otp.service.emailotp.util.EndpointUtils;
 import javax.ws.rs.core.Response;
 
 /**
- *
+ * This class implements the service layer for
+ * {@link org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApi}.
  */
 public class EmailotpApiServiceImpl implements EmailotpApiService {
 
