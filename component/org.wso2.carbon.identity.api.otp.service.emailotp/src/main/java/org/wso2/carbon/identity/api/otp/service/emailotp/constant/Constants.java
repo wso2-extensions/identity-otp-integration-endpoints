@@ -19,7 +19,7 @@
 package org.wso2.carbon.identity.api.otp.service.emailotp.constant;
 
 /**
- * Constants.
+ * This class defines constants for the Email OTP REST APIs.
  */
 public class Constants {
 
