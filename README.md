@@ -48,3 +48,46 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
 
     - Other tenants<br>
    `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/validate`
+
+# Email OTP REST-API
+### Prerequisites
+
+1. Go to the [identity-outbound-auth-email-otp](https://github.com/wso2-extensions/identity-outbound-auth-email-otp) repository which contains the OSGi bundle that supports the Email-OTP REST APIs, build it and put it in the
+   _**<IS_HOME>repository/components/dropins**_ directory.
+
+2. Apply the configurations which mentioned in the [identity-outbound-auth-email-otp](https://github.com/wso2-extensions/identity-outbound-auth-email-otp)
+
+### Build & Deploy
+1. To build the maven artifacts and war file, run the following command,
+   `mvn clean install`
+
+2. Add the built war file located in `~/component/org.wso2.carbon.identity.api.otp.service.emailotp/target`
+   directory to <IS_HOME>/repository/deployment/server/webapps` directory.
+
+3. Go to the **_<IS_HOME>/repository/conf/deployment.toml_** file, and add the below configurations.
+   ```
+   [[resource.access_control]]
+   default_access = "allow"
+   context = "(.*)/api/identity/email-otp/v1/(.*)"
+   secure = "true"
+   http_method = "POST"
+   
+   [tenant_context.rewrite.custom_webapps]
+   webapps="/api/identity/email-otp/v1/"
+   ```
+### Usage
+1. To generate Email-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/email-otp-endpoints/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
+
+    - `carbon.super` tenant<br>
+      `https://{server-url}:{server-port}/api/identity/email-otp/v1/generate`
+
+    - Other tenants<br>
+      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/generate`<br><br>
+
+2. To validate Email-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/email-otp-endpoints/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
+
+    - `carbon.super` tenant<br>
+      `https://{server-url}:{server-port}/api/identity/email-otp/v1/validate`
+
+    - Other tenants<br>
+      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/validate`
