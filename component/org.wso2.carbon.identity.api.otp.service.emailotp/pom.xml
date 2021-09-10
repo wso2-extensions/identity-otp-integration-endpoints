@@ -88,6 +88,11 @@
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.scm.wso2</groupId>
+            <artifactId>maven-scm</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- WSO2 dependencies -->
         <dependency>
@@ -104,11 +109,6 @@
             <groupId>org.wso2.carbon.identity.framework</groupId>
             <artifactId>org.wso2.carbon.identity.application.authentication.framework</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.scm.wso2</groupId>
-            <artifactId>maven-scm</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.emailotp</groupId>

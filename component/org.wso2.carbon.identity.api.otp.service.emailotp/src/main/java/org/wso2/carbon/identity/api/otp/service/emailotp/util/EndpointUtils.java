@@ -39,7 +39,7 @@ import javax.ws.rs.core.Response;
 import static org.wso2.carbon.identity.api.otp.service.emailotp.constant.Constants.CORRELATION_ID_MDC;
 
 /**
- * This class provides util functions for EMAIL OTP REST APIs.
+ * This class provides util functions for Email OTP REST APIs.
  */
 public class EndpointUtils {
 
@@ -170,4 +170,3 @@ public class EndpointUtils {
         return new ConflictRequestException(errorDTO);
     }
 }
-
