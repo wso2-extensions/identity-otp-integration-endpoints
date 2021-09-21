@@ -50,4 +50,3 @@ public class ConflictRequestException extends WebApplicationException {
         return message;
     }
 }
-

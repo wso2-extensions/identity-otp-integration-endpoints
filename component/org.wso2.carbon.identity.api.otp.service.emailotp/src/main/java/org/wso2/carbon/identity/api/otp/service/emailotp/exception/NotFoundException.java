@@ -50,4 +50,3 @@ public class NotFoundException extends WebApplicationException {
         return message;
     }
 }
-

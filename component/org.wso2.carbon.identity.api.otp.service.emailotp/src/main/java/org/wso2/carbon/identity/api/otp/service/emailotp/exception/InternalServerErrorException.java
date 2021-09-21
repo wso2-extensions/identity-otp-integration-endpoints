@@ -36,4 +36,3 @@ public class InternalServerErrorException extends WebApplicationException {
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).build());
     }
 }
-
