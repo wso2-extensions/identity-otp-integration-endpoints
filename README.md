@@ -3,7 +3,7 @@ Welcome to the WSO2 Identity Server (IS) API endpoints for the SMS and Email OTP
 
 WSO2-IS is one of the best Identity Servers, which enables you to offload your identity and user entitlement management 
 burden totally from your application. It comes with many features, supports many industry standards and most importantly 
-it allows you to extend it according to your security requirements. This repo contains REST-API endpoints for the SMS 
+it allows you to extend it according to your security requirements. This repository contains REST-API endpoints for the SMS 
 and Email OTP services.
 
 # SMS OTP REST-API
