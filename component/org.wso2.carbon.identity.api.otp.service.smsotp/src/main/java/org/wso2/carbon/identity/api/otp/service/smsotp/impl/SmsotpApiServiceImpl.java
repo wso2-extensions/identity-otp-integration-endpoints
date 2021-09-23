@@ -37,8 +37,7 @@ import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
 import javax.ws.rs.core.Response;
 
 /**
- * This class implements the service layer for
- * {@link org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApi}.
+ * This class implements the service layer for org.wso2.carbon.identity.api.otp.service.smsotp.SmsotpApi.
  */
 public class SmsotpApiServiceImpl implements SmsotpApiService {
 

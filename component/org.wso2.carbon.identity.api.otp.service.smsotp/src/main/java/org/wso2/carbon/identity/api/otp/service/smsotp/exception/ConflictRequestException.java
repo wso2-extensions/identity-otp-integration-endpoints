@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Conflict Request Exception.
+ * This class handles the Conflict Request Exception.
  */
 public class ConflictRequestException extends WebApplicationException {
 

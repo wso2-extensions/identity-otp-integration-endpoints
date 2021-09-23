@@ -33,6 +33,7 @@ import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPClientException;
 import org.wso2.carbon.identity.smsotp.common.exception.SMSOTPException;
 
 import java.util.UUID;
+
 import javax.ws.rs.core.Response;
 
 import static org.wso2.carbon.identity.api.otp.service.smsotp.constant.Constants.CORRELATION_ID_MDC;
