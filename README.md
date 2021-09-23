@@ -33,7 +33,7 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
    webapps="/api/identity/sms-otp/v1/"
    ```
 ### Usage
-1. To generate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
+1. To generate SMS-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
    
    - `carbon.super` tenant<br>
       `https://{server-url}:{server-port}/api/identity/sms-otp/v1/generate`
@@ -41,7 +41,7 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
    - Other tenants<br>
      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/generate`<br><br>
 
-2. To validate SMS-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
+2. To validate SMS-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
  
     - `carbon.super` tenant<br>
      `https://{server-url}:{server-port}/api/identity/sms-otp/v1/validate`
