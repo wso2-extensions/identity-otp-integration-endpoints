@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Bad Request Exception.
+ * This class handles the Bad Request Exception.
  */
 public class BadRequestException extends WebApplicationException {
 

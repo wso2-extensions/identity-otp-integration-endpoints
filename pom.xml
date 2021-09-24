@@ -294,7 +294,7 @@
         <identity.event.handler.version>1.2.9</identity.event.handler.version>
 
         <!-- otp extension properties -->
-        <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15-SNAPSHOT
+        <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15
         </org.wso2.carbon.extension.identity.smsotp.common.version>
         <org.wso2.carbon.extension.identity.emailotp.common.version>4.0.5-SNAPSHOT
         </org.wso2.carbon.extension.identity.emailotp.common.version>

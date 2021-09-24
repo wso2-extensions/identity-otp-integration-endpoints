@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Forbidden Exception.
+ * This class handles the Forbidden Exception.
  */
 public class ForbiddenException extends WebApplicationException {
 
