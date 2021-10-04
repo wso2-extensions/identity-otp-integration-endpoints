@@ -113,7 +113,7 @@
         <dependency>
             <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.emailotp</groupId>
             <artifactId>org.wso2.carbon.extension.identity.emailotp.common</artifactId>
-            <version>4.0.5-SNAPSHOT</version>
+            <version>4.0.6-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
