@@ -19,7 +19,7 @@ _**<IS_HOME>repository/components/dropins**_ directory.
    `mvn clean install`
 
 2. Add the built war file located in `~/component/org.wso2.carbon.identity.api.otp.service.smsotp/target` 
-directory to <IS_HOME>/repository/deployment/server/webapps` directory.
+directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
 
 3. Go to the **_<IS_HOME>/repository/conf/deployment.toml_** file, and add the below configurations.
    ```
@@ -76,7 +76,7 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
    webapps="/api/identity/email-otp/v1/"
    ```
 ### Usage
-1. To generate Email-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/email-otp-endpoints/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
+1. To generate Email-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
 
     - `carbon.super` tenant<br>
       `https://{server-url}:{server-port}/api/identity/email-otp/v1/generate`
@@ -84,7 +84,7 @@ directory to <IS_HOME>/repository/deployment/server/webapps` directory.
     - Other tenants<br>
       `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/generate`<br><br>
 
-2. To validate Email-OTP check [here](https://github.com/maneeshaindrachapa/wso2-otp-service-endpoints/blob/email-otp-endpoints/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
+2. To validate Email-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
 
     - `carbon.super` tenant<br>
       `https://{server-url}:{server-port}/api/identity/email-otp/v1/validate`
