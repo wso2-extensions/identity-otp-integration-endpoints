@@ -27,23 +27,26 @@ import org.wso2.carbon.extension.identity.emailotp.common.dto.ValidationResponse
 import org.wso2.carbon.extension.identity.emailotp.common.exception.EmailOtpClientException;
 import org.wso2.carbon.extension.identity.emailotp.common.exception.EmailOtpException;
 import org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApiService;
-import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerateResponse;
-import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerationRequest;
-import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationFailureReason;
-import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationRequest;
-import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.*;
 import org.wso2.carbon.identity.api.otp.service.emailotp.util.EndpointUtils;
 
 import javax.ws.rs.core.Response;
 
 /**
  * This class implements the service layer for
- * {@link org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApi}.
+ * org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApi.
  */
 public class EmailotpApiServiceImpl implements EmailotpApiService {
 
     private static final Log log = LogFactory.getLog(EmailotpApiServiceImpl.class);
 
+    /**
+     * This method is implemented from org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApi
+     * to generate OTP.
+     *
+     * @param otpGenerationRequest Otp generation request object.
+     * @return Response
+     */
     @Override
     public Response emailotpGeneratePost(OTPGenerationRequest otpGenerationRequest) {
 
@@ -63,15 +66,22 @@ public class EmailotpApiServiceImpl implements EmailotpApiService {
         }
     }
 
+    /**
+     * This method is implemented from org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApi
+     * to validate OTP.
+     *
+     * @param otpValidationRequest Otp validation request object.
+     * @return Response
+     */
     @Override
     public Response emailotpValidatePost(OTPValidationRequest otpValidationRequest) {
 
         String transactionId = StringUtils.trim(otpValidationRequest.getTransactionId());
         String userId = StringUtils.trim(otpValidationRequest.getUserId());
-        String smsOtp = StringUtils.trim(otpValidationRequest.getEmailOtp());
+        String emailOtp = StringUtils.trim(otpValidationRequest.getEmailOtp());
         try {
             ValidationResponseDTO responseDTO = EndpointUtils.getEmailOTPService().validateEmailOTP(
-                    transactionId, userId, smsOtp);
+                    transactionId, userId, emailOtp);
             FailureReasonDTO failureReasonDTO = responseDTO.getFailureReason();
             OTPValidationFailureReason failureReason = null;
             if (failureReasonDTO != null) {

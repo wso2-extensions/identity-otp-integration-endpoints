@@ -45,6 +45,10 @@ public class EndpointUtils {
 
     private static final Log log = LogFactory.getLog(EndpointUtils.class);
 
+    /**
+     * Get the instance of Email OTP OSGi service.
+     * @return EmailOtpService
+     */
     public static EmailOtpService getEmailOTPService() {
 
         return (EmailOtpService) PrivilegedCarbonContext.getThreadLocalCarbonContext().
