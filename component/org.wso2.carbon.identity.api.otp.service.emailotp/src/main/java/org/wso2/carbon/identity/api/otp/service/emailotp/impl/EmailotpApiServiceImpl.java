@@ -27,7 +27,11 @@ import org.wso2.carbon.extension.identity.emailotp.common.dto.ValidationResponse
 import org.wso2.carbon.extension.identity.emailotp.common.exception.EmailOtpClientException;
 import org.wso2.carbon.extension.identity.emailotp.common.exception.EmailOtpException;
 import org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApiService;
-import org.wso2.carbon.identity.api.otp.service.emailotp.dto.*;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerateResponse;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerationRequest;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationFailureReason;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationRequest;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationResponse;
 import org.wso2.carbon.identity.api.otp.service.emailotp.util.EndpointUtils;
 
 import javax.ws.rs.core.Response;
