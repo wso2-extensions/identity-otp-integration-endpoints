@@ -47,8 +47,8 @@ directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
    http_method = "POST"
    permissions = "/permission/admin/manage/identity/authentication/otp/validate"
    
-   [tenant_context.rewrite.custom_webapps]
-   webapps="/api/identity/sms-otp/v1/"
+   [tenant_context.rewrite]
+   custom_webapps=["/api/identity/sms-otp/v1/"]
    ```
 ### Usage
 1. To generate SMS-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
@@ -98,8 +98,8 @@ directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
    http_method = "POST"
    permissions = "/permission/admin/manage/identity/authentication/otp/validate"
    
-   [tenant_context.rewrite.custom_webapps]
-   webapps="/api/identity/email-otp/v1/"
+   [tenant_context.rewrite]
+   custom_webapps=["/api/identity/email-otp/v1/"]
    ```
 ### Usage
 1. To generate Email-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
