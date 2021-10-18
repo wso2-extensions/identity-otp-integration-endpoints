@@ -31,6 +31,7 @@
 
     <modules>
         <module>component/org.wso2.carbon.identity.api.otp.service.smsotp</module>
+        <module>component/org.wso2.carbon.identity.api.otp.service.emailotp</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -181,6 +182,11 @@
                 <artifactId>org.wso2.carbon.extension.identity.smsotp.common</artifactId>
                 <version>${org.wso2.carbon.extension.identity.smsotp.common.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.emailotp</groupId>
+                <artifactId>org.wso2.carbon.extension.identity.emailotp.common</artifactId>
+                <version>${org.wso2.carbon.extension.identity.emailotp.common.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -290,6 +296,8 @@
         <!-- otp extension properties -->
         <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15
         </org.wso2.carbon.extension.identity.smsotp.common.version>
+        <org.wso2.carbon.extension.identity.emailotp.common.version>4.0.6
+        </org.wso2.carbon.extension.identity.emailotp.common.version>
 
         <!-- Carbon kernel version -->
         <carbon.kernel.version>4.7.0-m2</carbon.kernel.version>
