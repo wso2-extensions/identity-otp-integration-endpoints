@@ -29,6 +29,14 @@
     <groupId>org.wso2.carbon.identity.api</groupId>
     <artifactId>org.wso2.carbon.identity.api.otp.service</artifactId>
 
+    <scm>
+        <url>https://github.com/wso2-extensions/identity-otp-integration-endpoints.git</url>
+        <developerConnection>scm:git:https://github.com/wso2-extensions/identity-otp-integration-endpoints.git
+        </developerConnection>
+        <connection>scm:git:https://github.com/wso2-extensions/identity-otp-integration-endpoints.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
     <modules>
         <module>component/org.wso2.carbon.identity.api.otp.service.smsotp</module>
         <module>component/org.wso2.carbon.identity.api.otp.service.emailotp</module>
@@ -239,6 +247,14 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <preparationGoals>clean install</preparationGoals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
