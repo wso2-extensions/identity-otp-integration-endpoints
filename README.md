@@ -29,20 +29,20 @@ _**<IS_HOME>repository/components/dropins**_ directory.
    `mvn clean install`
 
 2. Add the built war file located in `~/component/org.wso2.carbon.identity.api.otp.service.smsotp/target` 
-directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
+directory to **_<IS_HOME>/repository/deployment/server/webapps_** directory.
 
 3. Go to the **_<IS_HOME>/repository/conf/deployment.toml_** file, and add the below configurations.
    ```
    [[resource.access_control]]
    default_access = "allow"
-   context = "(.*)/api/identity/sms-otp/v1/generate"
+   context = "(.*)/api/identity/sms-otp/v1/smsotp/generate"
    secure = "true"
    http_method = "POST"
    permissions = "/permission/admin/manage/identity/authentication/otp/generate"
    
    [[resource.access_control]]
    default_access = "allow"
-   context = "(.*)/api/identity/sms-otp/v1/validate"
+   context = "(.*)/api/identity/sms-otp/v1/smsotp/validate"
    secure = "true"
    http_method = "POST"
    permissions = "/permission/admin/manage/identity/authentication/otp/validate"
@@ -54,18 +54,18 @@ directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
 1. To generate SMS-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
    
    - `carbon.super` tenant<br>
-      `https://{server-url}:{server-port}/api/identity/sms-otp/v1/generate`
+      `https://{server-url}:{server-port}/api/identity/sms-otp/v1/smsotp/generate`
    
    - Other tenants<br>
-     `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/generate`<br><br>
+     `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/smsotp/generate`<br><br>
 
 2. To validate SMS-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.smsotp/src/main/resources/sms-otp.yaml)
  
     - `carbon.super` tenant<br>
-     `https://{server-url}:{server-port}/api/identity/sms-otp/v1/validate`
+     `https://{server-url}:{server-port}/api/identity/sms-otp/v1/smsotp/validate`
 
     - Other tenants<br>
-   `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/validate`
+   `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/sms-otp/v1/smsotp/validate`
 
 # Email OTP REST-API
 ### Prerequisites
@@ -80,7 +80,7 @@ directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
    `mvn clean install`
 
 2. Add the built war file located in `~/component/org.wso2.carbon.identity.api.otp.service.emailotp/target`
-   directory to <IS_HOME>/repository/deployment/server/webapps` directory.
+   directory to **_<IS_HOME>/repository/deployment/server/webapps_** directory.
 
 3. Go to the **_<IS_HOME>/repository/conf/deployment.toml_** file, and add the below configurations.
    ```
@@ -105,15 +105,15 @@ directory to `<IS_HOME>/repository/deployment/server/webapps` directory.
 1. To generate Email-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
 
     - `carbon.super` tenant<br>
-      `https://{server-url}:{server-port}/api/identity/email-otp/v1/generate`
+      `https://{server-url}:{server-port}/api/identity/email-otp/v1/emailotp/generate`
 
     - Other tenants<br>
-      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/generate`<br><br>
+      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/emailotp/generate`<br><br>
 
 2. To validate Email-OTP check [here](https://github.com/wso2-extensions/identity-otp-integration-endpoints/blob/master/component/org.wso2.carbon.identity.api.otp.service.emailotp/src/main/resources/email-otp.yaml)
 
     - `carbon.super` tenant<br>
-      `https://{server-url}:{server-port}/api/identity/email-otp/v1/validate`
+      `https://{server-url}:{server-port}/api/identity/email-otp/v1/emailotp/validate`
 
     - Other tenants<br>
-      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/validate`
+      `https://{server-url}:{server-port}/t/{tenant-name}/api/identity/email-otp/v1/emailotp/validate`
