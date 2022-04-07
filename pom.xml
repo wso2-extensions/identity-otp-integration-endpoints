@@ -160,6 +160,7 @@
                 <groupId>org.wso2.carbon.identity.governance</groupId>
                 <artifactId>org.wso2.carbon.identity.recovery</artifactId>
                 <version>${identity.governance.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.identity.framework</groupId>
@@ -177,21 +178,25 @@
                 <groupId>org.wso2.carbon.identity.framework</groupId>
                 <artifactId>org.wso2.carbon.identity.application.authentication.framework</artifactId>
                 <version>${carbon.identity.framework.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.user.core</artifactId>
                 <version>${carbon.kernel.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.smsotp</groupId>
                 <artifactId>org.wso2.carbon.extension.identity.smsotp.common</artifactId>
                 <version>${org.wso2.carbon.extension.identity.smsotp.common.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.extension.identity.authenticator.outbound.emailotp</groupId>
                 <artifactId>org.wso2.carbon.extension.identity.emailotp.common</artifactId>
                 <version>${org.wso2.carbon.extension.identity.emailotp.common.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -274,7 +279,7 @@
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
         <maven.scm.version>1.7.0.wso2v3</maven.scm.version>
-        <maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+        <maven.war.plugin.version>3.2.0</maven.war.plugin.version>
 
         <!-- check-style plugin properties -->
         <maven.checkstyleplugin.excludes>**/gen/**/*</maven.checkstyleplugin.excludes>
@@ -299,11 +304,11 @@
 
         <!-- open-api tool properties -->
         <openapi.tools.version>4.1.2</openapi.tools.version>
-        <org.codehaus.mojo.version>3.2.0</org.codehaus.mojo.version>
+        <org.codehaus.mojo.version>3.0.0</org.codehaus.mojo.version>
 
         <!-- wso2 product related properties -->
-        <identity.governance.version>1.4.1</identity.governance.version>
-        <carbon.identity.framework.version>5.16.95</carbon.identity.framework.version>
+        <identity.governance.version>1.4.72</identity.governance.version>
+        <carbon.identity.framework.version>5.18.187</carbon.identity.framework.version>
         <identity.workflow.impl.bps.version>5.2.0</identity.workflow.impl.bps.version>
         <identity.event.handler.version>1.2.9</identity.event.handler.version>
 
@@ -314,7 +319,7 @@
         </org.wso2.carbon.extension.identity.emailotp.common.version>
 
         <!-- Carbon kernel version -->
-        <carbon.kernel.version>4.7.0-m2</carbon.kernel.version>
+        <carbon.kernel.version>4.6.1</carbon.kernel.version>
     </properties>
 </project>
 
