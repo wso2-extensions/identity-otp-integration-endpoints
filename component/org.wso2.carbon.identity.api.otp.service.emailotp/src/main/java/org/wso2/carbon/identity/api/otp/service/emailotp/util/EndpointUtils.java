@@ -20,7 +20,7 @@ package org.wso2.carbon.identity.api.otp.service.emailotp.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 import org.wso2.carbon.context.PrivilegedCarbonContext;
 import org.wso2.carbon.extension.identity.emailotp.common.EmailOtpService;
 import org.wso2.carbon.extension.identity.emailotp.common.constant.Constants;
