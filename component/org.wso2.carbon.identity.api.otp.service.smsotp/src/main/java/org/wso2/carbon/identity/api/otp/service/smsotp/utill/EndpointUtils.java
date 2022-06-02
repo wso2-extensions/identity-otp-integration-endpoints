@@ -19,7 +19,7 @@
 package org.wso2.carbon.identity.api.otp.service.smsotp.utill;
 
 import org.apache.commons.logging.Log;
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 import org.wso2.carbon.context.PrivilegedCarbonContext;
 import org.wso2.carbon.identity.api.otp.service.smsotp.dto.Error;
 import org.wso2.carbon.identity.api.otp.service.smsotp.exception.BadRequestException;
