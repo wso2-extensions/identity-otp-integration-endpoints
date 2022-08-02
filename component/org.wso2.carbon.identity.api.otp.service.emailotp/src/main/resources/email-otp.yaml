@@ -66,6 +66,45 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
         - emailotp
+  /emailotp/verify:
+    post:
+      description: |
+        This API is used to verify the emailotp without invalidate.
+        <b>Permission required:</b><br>
+        * none<br>
+        <b>Scope required:</b><br>
+        * internal_login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPVerificationRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPVerificationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Resource Forbidden
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - emailotp
   /emailotp/validate:
     post:
       description: |
@@ -166,6 +205,60 @@ components:
           readOnly: true
           description: The generated OTP
 
+    #-----------------------------------------------------
+    # OTP Verification Request object
+    #-----------------------------------------------------
+    OTPVerificationRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: SCIM ID of the user
+          example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
+        transactionId:
+          type: string
+          description: Unique identifier of the generated OTP
+        emailOtp:
+          type: string
+          description: EMAIL OTP
+
+    #-----------------------------------------------------
+    # OTP Verification Response object
+    #-----------------------------------------------------
+    OTPVerificationResponse:
+      type: object
+      required:
+        - isValid
+        - userId
+      properties:
+        isValid:
+          type: boolean
+          description: EMAIL OTP verified successfully
+        userId:
+          type: string
+          description: SCIM ID of the user which the token issued and verified
+          example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
+        failureReason:
+          type: object
+          $ref: '#/components/schemas/OTPVerificationFailureReason'
+
+    #-----------------------------------------------------
+    # OTP Verification Failure Reason object
+    #-----------------------------------------------------
+    OTPVerificationFailureReason:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EMAIL-60006
+        message:
+          type: string
+          description: OTP verification failure reason.
+          example: 'Expired OTP.'
+        description:
+          type: string
+          description: OTP verification failure reason description.
+          example: 'Expired OTP provided for the user Id: 8b1cc9c4-b671-448a-a334-5afe838a4a3b.'
     #-----------------------------------------------------
     # OTP Validation Request object
     #-----------------------------------------------------

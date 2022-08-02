@@ -32,6 +32,9 @@ import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerationReques
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationFailureReason;
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationRequest;
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationFailureReason;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationRequest;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationResponse;
 import org.wso2.carbon.identity.api.otp.service.emailotp.util.EndpointUtils;
 
 import javax.ws.rs.core.Response;
@@ -95,6 +98,44 @@ public class EmailotpApiServiceImpl implements EmailotpApiService {
                         .description(failureReasonDTO.getDescription());
             }
             OTPValidationResponse response = new OTPValidationResponse()
+                    .isValid(responseDTO.isValid())
+                    .userId(responseDTO.getUserId())
+                    .failureReason(failureReason);
+            return Response.ok(response).build();
+        } catch (EmailOtpClientException e) {
+            return EndpointUtils.handleBadRequestResponse(e, log);
+        } catch (EmailOtpException e) {
+            return EndpointUtils.handleServerErrorResponse(e, log);
+        } catch (Throwable e) {
+            return EndpointUtils.handleUnexpectedServerError(e, log);
+        }
+    }
+
+    /**
+     * This method is implemented from org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApi
+     * to verify OTP without invalidate.
+     *
+     * @param otpVerificationRequest Otp verification request object.
+     * @return Response
+     */
+    @Override
+    public Response emailotpVerifyPost(OTPVerificationRequest otpVerificationRequest) {
+
+        String transactionId = StringUtils.trim(otpVerificationRequest.getTransactionId());
+        String userId = StringUtils.trim(otpVerificationRequest.getUserId());
+        String emailOtp = StringUtils.trim(otpVerificationRequest.getEmailOtp());
+        try {
+            ValidationResponseDTO responseDTO = EndpointUtils.getEmailOTPService().verifyEmailOTP(
+                    transactionId, userId, emailOtp);
+            FailureReasonDTO failureReasonDTO = responseDTO.getFailureReason();
+            OTPVerificationFailureReason failureReason = null;
+            if (failureReasonDTO != null) {
+                failureReason = new OTPVerificationFailureReason()
+                        .code(failureReasonDTO.getCode())
+                        .message(failureReasonDTO.getMessage())
+                        .description(failureReasonDTO.getDescription());
+            }
+            OTPVerificationResponse response = new OTPVerificationResponse()
                     .isValid(responseDTO.isValid())
                     .userId(responseDTO.getUserId())
                     .failureReason(failureReason);

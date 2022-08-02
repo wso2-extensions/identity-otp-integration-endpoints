@@ -29,6 +29,8 @@ import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerateResponse
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerationRequest;
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationRequest;
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationRequest;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationResponse;
 import javax.ws.rs.core.Response;
 
 
@@ -37,4 +39,6 @@ public interface EmailotpApiService {
       public Response emailotpGeneratePost(OTPGenerationRequest otPGenerationRequest);
 
       public Response emailotpValidatePost(OTPValidationRequest otPValidationRequest);
+
+      public Response emailotpVerifyPost(OTPVerificationRequest otPVerificationRequest);
 }

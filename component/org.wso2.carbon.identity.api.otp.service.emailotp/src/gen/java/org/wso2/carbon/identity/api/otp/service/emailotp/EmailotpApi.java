@@ -29,6 +29,8 @@ import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerateResponse
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPGenerationRequest;
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationRequest;
 import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPValidationResponse;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationRequest;
+import org.wso2.carbon.identity.api.otp.service.emailotp.dto.OTPVerificationResponse;
 import org.wso2.carbon.identity.api.otp.service.emailotp.EmailotpApiService;
 
 import javax.validation.Valid;
@@ -90,6 +92,29 @@ public class EmailotpApi  {
     public Response emailotpValidatePost(@ApiParam(value = "" ,required=true) @Valid OTPValidationRequest otPValidationRequest) {
 
         return delegate.emailotpValidatePost(otPValidationRequest );
+    }
+
+    @Valid
+    @POST
+    @Path("/verify")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "", notes = "This API is used to verify the emailotp without invalidate. <b>Permission required:</b><br> * none<br> <b>Scope required:</b><br> * internal_login ", response = OTPVerificationResponse.class, authorizations = {
+        @Authorization(value = "BasicAuth"),
+        @Authorization(value = "OAuth2", scopes = {
+            
+        })
+    }, tags={ "emailotp" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = OTPVerificationResponse.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = Error.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = Void.class),
+        @ApiResponse(code = 403, message = "Resource Forbidden", response = Void.class),
+        @ApiResponse(code = 500, message = "Server Error", response = Error.class)
+    })
+    public Response emailotpVerifyPost(@ApiParam(value = "" ,required=true) @Valid OTPVerificationRequest otPVerificationRequest) {
+
+        return delegate.emailotpVerifyPost(otPVerificationRequest );
     }
 
 }
