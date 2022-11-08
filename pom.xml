@@ -310,7 +310,7 @@
         <!-- otp extension properties -->
         <org.wso2.carbon.extension.identity.smsotp.common.version>3.0.15
         </org.wso2.carbon.extension.identity.smsotp.common.version>
-        <org.wso2.carbon.extension.identity.emailotp.common.version>4.0.10
+        <org.wso2.carbon.extension.identity.emailotp.common.version>4.0.6
         </org.wso2.carbon.extension.identity.emailotp.common.version>
 
         <!-- Carbon kernel version -->

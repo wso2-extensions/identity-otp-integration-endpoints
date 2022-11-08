@@ -81,7 +81,7 @@ public class EmailotpApi  {
         @Authorization(value = "OAuth2", scopes = {
             
         })
-    }, tags={ "emailotp" })
+    }, tags={ "emailotp", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = OTPValidationResponse.class),
         @ApiResponse(code = 400, message = "Bad Request", response = Error.class),

@@ -3,7 +3,7 @@ info:
   description: >
     This is the RESTful API for a user to manage EMAIL-OTP in WSO2
     Identity Server.
-  version: v1
+  version: v1.1
   title: WSO2 Identity Server - EMAIL OTP API Definition
   license:
     name: Apache 2.0
@@ -189,6 +189,11 @@ components:
           type: string
           description: SCIM Id of the user
           example: '8b1cc9c4-b671-448a-a334-5afe838a4a3b'
+        emailOtpExpiryTime:
+          type: string
+          description: Expiry time of OTP
+          example: '120'
+
 
     #-----------------------------------------------------
     # OTP Generation Response object
