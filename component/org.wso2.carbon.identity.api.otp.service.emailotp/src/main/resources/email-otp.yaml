@@ -3,7 +3,7 @@ info:
   description: >
     This is the RESTful API for a user to manage EMAIL-OTP in WSO2
     Identity Server.
-  version: v1.1
+  version: v1
   title: WSO2 Identity Server - EMAIL OTP API Definition
   license:
     name: Apache 2.0
