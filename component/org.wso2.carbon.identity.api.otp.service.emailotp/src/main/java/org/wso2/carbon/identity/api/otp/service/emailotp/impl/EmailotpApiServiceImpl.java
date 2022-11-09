@@ -58,12 +58,23 @@ public class EmailotpApiServiceImpl implements EmailotpApiService {
     public Response emailotpGeneratePost(OTPGenerationRequest otpGenerationRequest) {
 
         String userId = StringUtils.trim(otpGenerationRequest.getUserId());
+        String emailOtpExpiryTime = StringUtils.trim(otpGenerationRequest.getEmailOtpExpiryTime());
         try {
-            GenerationResponseDTO responseDTO = EndpointUtils.getEmailOTPService().generateEmailOTP(userId);
-            OTPGenerateResponse response = new OTPGenerateResponse()
-                    .transactionId(responseDTO.getTransactionId())
-                    .emailOtp(responseDTO.getEmailOTP());
-            return Response.ok(response).build();
+            if (StringUtils.isBlank(emailOtpExpiryTime)) {
+                GenerationResponseDTO responseDTO = EndpointUtils.getEmailOTPService().generateEmailOTP(
+                        userId);
+                OTPGenerateResponse response = new OTPGenerateResponse()
+                        .transactionId(responseDTO.getTransactionId())
+                        .emailOtp(responseDTO.getEmailOTP());
+                return Response.ok(response).build();
+            } else {
+                GenerationResponseDTO responseDTO = EndpointUtils.getEmailOTPService().generateEmailOTP(
+                        userId, emailOtpExpiryTime);
+                OTPGenerateResponse response = new OTPGenerateResponse()
+                        .transactionId(responseDTO.getTransactionId())
+                        .emailOtp(responseDTO.getEmailOTP());
+                return Response.ok(response).build();
+            }
         } catch (EmailOtpClientException e) {
             return EndpointUtils.handleBadRequestResponse(e, log);
         } catch (EmailOtpException e) {

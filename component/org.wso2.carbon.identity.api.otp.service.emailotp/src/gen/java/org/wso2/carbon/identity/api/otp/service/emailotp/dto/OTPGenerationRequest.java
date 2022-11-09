@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.*;
 public class OTPGenerationRequest  {
   
     private String userId;
+    private String emailOtpExpiryTime;
 
     /**
     * SCIM Id of the user
@@ -53,6 +54,25 @@ public class OTPGenerationRequest  {
         this.userId = userId;
     }
 
+    /**
+    * Expiry time of OTP
+    **/
+    public OTPGenerationRequest emailOtpExpiryTime(String emailOtpExpiryTime) {
+
+        this.emailOtpExpiryTime = emailOtpExpiryTime;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "120", value = "Expiry time of OTP")
+    @JsonProperty("emailOtpExpiryTime")
+    @Valid
+    public String getEmailOtpExpiryTime() {
+        return emailOtpExpiryTime;
+    }
+    public void setEmailOtpExpiryTime(String emailOtpExpiryTime) {
+        this.emailOtpExpiryTime = emailOtpExpiryTime;
+    }
+
 
 
     @Override
@@ -65,12 +85,13 @@ public class OTPGenerationRequest  {
             return false;
         }
         OTPGenerationRequest otPGenerationRequest = (OTPGenerationRequest) o;
-        return Objects.equals(this.userId, otPGenerationRequest.userId);
+        return Objects.equals(this.userId, otPGenerationRequest.userId) &&
+            Objects.equals(this.emailOtpExpiryTime, otPGenerationRequest.emailOtpExpiryTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId);
+        return Objects.hash(userId, emailOtpExpiryTime);
     }
 
     @Override
@@ -80,6 +101,7 @@ public class OTPGenerationRequest  {
         sb.append("class OTPGenerationRequest {\n");
         
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+        sb.append("    emailOtpExpiryTime: ").append(toIndentedString(emailOtpExpiryTime)).append("\n");
         sb.append("}");
         return sb.toString();
     }
